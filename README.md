@@ -19,7 +19,7 @@ Portanto, sustentabilidade pode ser definida como os processos e ações por mei
 
 Tendo em conta que a sustentabilidade é um dos assuntos de maior relevância nos últimos anos, por conta de problemas ambientais e sociais que a humanidade vem passando,
 pretendemos desenvolver a plataforma E- commerce SustainableProducts que irá facilitar um consumo mais sustentável de produtos e serviços por parte dos utilizadores.\
-A plataforma terá como objetivo principal, oferecer os produtos e serviços mais vantajosos para o meio ambiente e de sensibilizar os utilizadores da importância ecológica \
+A plataforma terá como objetivo principal, oferecer os produtos e serviços mais vantajosos para o meio ambiente e de sensibilizar os utilizadores da importância ecológica
 do consumo de produtos e serviços que serão fornecidos em relação a outros que utilizam materiais que prejudicam o meio ambiente. 
 
 De acordo a pesquisa de mercado que foi realizada no que toca ao âmbito do projeto, foi verificado que existem ferramentas que possibilitam a compra de produtos sustentáveis.
