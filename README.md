@@ -14,18 +14,18 @@ Sustentável é um adjetivo para algo que pode ser sustentado, ou seja, algo que
 No final das contas, a sustentabilidade pode talvez ser vista como o (s) processo (s) pelo qual algo é mantido em um determinado nível.
 
 No entanto, hoje em dia, devido aos problemas ambientais e sociais que a sociedade enfrenta, a sustentabilidade é comumente utilizada de uma forma específica.\
-Portanto, sustentabilidade pode ser definida como os processos e ações por meio dos quais a humanidade evita o esgotamento dos recursos naturais \
+Portanto, sustentabilidade pode ser definida como os processos e ações por meio dos quais a humanidade evita o esgotamento dos recursos naturais
 (que é influenciado pela forma como as sociedades se organizam) para manter um equilíbrio ecológico para que a qualidade de vida da sociedade não diminua.
 
-Tendo em conta que a sustentabilidade é um dos assuntos de maior relevância nos últimos anos, por conta de problemas ambientais e sociais que a humanidade vem passando,\
-pretendemos desenvolver a plataforma E- commerce SustainableProducts que irá facilitar um consumo mais sustentável de produtos e serviços por parte dos utilizadores.
+Tendo em conta que a sustentabilidade é um dos assuntos de maior relevância nos últimos anos, por conta de problemas ambientais e sociais que a humanidade vem passando,
+pretendemos desenvolver a plataforma E- commerce SustainableProducts que irá facilitar um consumo mais sustentável de produtos e serviços por parte dos utilizadores.\
 A plataforma terá como objetivo principal, oferecer os produtos e serviços mais vantajosos para o meio ambiente e de sensibilizar os utilizadores da importância ecológica \
 do consumo de produtos e serviços que serão fornecidos em relação a outros que utilizam materiais que prejudicam o meio ambiente. 
 
-De acordo a pesquisa de mercado que foi realizada no que toca ao âmbito do projeto, foi verificado que existem ferramentas que possibilitam a compra de produtos sustentáveis. \
+De acordo a pesquisa de mercado que foi realizada no que toca ao âmbito do projeto, foi verificado que existem ferramentas que possibilitam a compra de produtos sustentáveis.
 Plataformas como: [1] Pegada verde, [2] Insane in the rain e a [3] Organiko a compra e vendas de produtos sustentáveis.
 
-Sendo assim, a diferença da plataforma SustainableProducts para com as que foram mencionadas acima é que a SustainableProducts irá fornecer diferentes tipos serviços sustentáveis \
+Sendo assim, a diferença da plataforma SustainableProducts para com as que foram mencionadas acima é que a SustainableProducts irá fornecer diferentes tipos serviços sustentáveis 
 que serão fornecidos por empresas que são especializadas no desenvolvimento de serviços sustentáveis.       
 
 
@@ -85,5 +85,5 @@ N/A
 ## Referências:
 [1]Pegada verde. Acedido em: 31, 10, 2020, em: https://pegadaverde.pt/pt_pt/ \
 [2]Insane in the rain. Acedido em: 31, 10, 2020, em: https://insaneintherain.com/ \
-[2]Organiko. Acedido em: 31, 10, 2020, em:https://www.organiko.pt/ \
+[3]Organiko. Acedido em: 31, 10, 2020, em:https://www.organiko.pt/ \
 
