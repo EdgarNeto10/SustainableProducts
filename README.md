@@ -23,7 +23,7 @@ A plataforma terá como objetivo principal, oferecer os produtos e serviços mai
 do consumo de produtos e serviços que serão fornecidos em relação a outros que utilizam materiais que prejudicam o meio ambiente. 
 
 De acordo a pesquisa de mercado que foi realizada no que toca ao âmbito do projeto, foi verificado que existem ferramentas que possibilitam a compra de produtos sustentáveis.
-Plataformas como: [1] Pegada verde, [2] Insane in the rain e a [3] Organiko a compra e vendas de produtos sustentáveis.
+Plataformas como: [1] Pegada verde, [2] Insane in the rain e a [3] Organiko suportam a compra e vendas de produtos sustentáveis.
 
 Sendo assim, a diferença da plataforma SustainableProducts para com as que foram mencionadas acima é que a SustainableProducts irá fornecer diferentes tipos serviços sustentáveis 
 que serão fornecidos por empresas que são especializadas no desenvolvimento de serviços sustentáveis.       
@@ -85,5 +85,5 @@ N/A
 ## Referências:
 [1]Pegada verde. Acedido em: 31, 10, 2020, em: https://pegadaverde.pt/pt_pt/ \
 [2]Insane in the rain. Acedido em: 31, 10, 2020, em: https://insaneintherain.com/ \
-[3]Organiko. Acedido em: 31, 10, 2020, em:https://www.organiko.pt/ \
+[3]Organiko. Acedido em: 31, 10, 2020, em:https://www.organiko.pt/ 
 
