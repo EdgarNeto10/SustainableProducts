@@ -12,34 +12,35 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import pt.iade.sustainableProducts.models.Produto;
-import pt.iade.sustainableProducts.models.repositories.ProdutoRepository;
+import pt.iade.sustainableProducts.models.Encomenda;
+import pt.iade.sustainableProducts.models.repositories.EncomendaRepository;
+
 
 
 
 @RestController
-@RequestMapping(path = "/api/produtos")
+@RequestMapping(path = "/api/clientes/encomendas")
 
-public class ProdutoController {
+public class EncomendaController {
 
-    private Logger logger = LoggerFactory.getLogger(ProdutoController.class);
+    private Logger logger = LoggerFactory.getLogger(EncomendaController.class);
  
     @Autowired
-    private ProdutoRepository produtoRepository;
+    private EncomendaRepository encomendaRepository;
 
     @GetMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE) 
 
 
-    public Iterable<Produto> getProdutos() {
-        logger.info("Sending all products");
-        return produtoRepository.findAll();
+    public Iterable<Encomenda> getProdutos() {
+        logger.info("Sending all encomendas");
+        return encomendaRepository.findAll();
     }
 
     @GetMapping(path = "/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Produto getProduto(@PathVariable int id) {
-         logger.info("Sending category with id "+id);
-         Optional<Produto> _produto = produtoRepository.findById(id);
-         return _produto.get();
+    public Encomenda getEncomenda(@PathVariable int id) {
+         logger.info("Sending encomenda with id "+id);
+         Optional<Encomenda> _encomenda = encomendaRepository.findById(id);
+         return _encomenda.get();
       
          
     }

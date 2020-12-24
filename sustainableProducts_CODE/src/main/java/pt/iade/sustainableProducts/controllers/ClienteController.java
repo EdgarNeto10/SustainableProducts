@@ -1,4 +1,4 @@
-/*package pt.iade.sustainableProducts.controllers;
+package pt.iade.sustainableProducts.controllers;
 
 import java.util.Optional;
 
@@ -12,13 +12,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import pt.iade.sustainableProducts.models.Cliente;
-import pt.iade.sustainableProducts.models.ClienteRepository;
+import pt.iade.sustainableProducts.models.repositories.ClienteRepository;
+
 
 @RestController
 @RequestMapping(path = "/api/clientes")
 
 public class ClienteController {
-    private Logger logger = LoggerFactory.getLogger(CategoriaController.class);
+    private Logger logger = LoggerFactory.getLogger(ClienteController.class);
 
     @Autowired
     private ClienteRepository clienteRepository;
@@ -38,4 +39,4 @@ public class ClienteController {
          return _cliente.get();
     }
 
-}*/
+}

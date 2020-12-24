@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import pt.iade.sustainableProducts.models.Categoria;
-import pt.iade.sustainableProducts.models.CategoriaRepository;
+import pt.iade.sustainableProducts.models.repositories.CategoriaRepository;
+
 
 @RestController
 @RequestMapping(path = "/api/categorias")
