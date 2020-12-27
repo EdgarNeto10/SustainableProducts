@@ -31,7 +31,7 @@ public class EncomendaController {
     @GetMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE) 
 
 
-    public Iterable<Encomenda> getProdutos() {
+    public Iterable<Encomenda> getEncomendas() {
         logger.info("Sending all encomendas");
         return encomendaRepository.findAll();
     }

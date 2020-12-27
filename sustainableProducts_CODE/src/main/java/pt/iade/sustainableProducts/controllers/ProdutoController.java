@@ -18,7 +18,7 @@ import pt.iade.sustainableProducts.models.repositories.ProdutoRepository;
 
 
 @RestController
-@RequestMapping(path = "/api/produtos")
+@RequestMapping(path = "/api/categorias/produtos")
 
 public class ProdutoController {
 

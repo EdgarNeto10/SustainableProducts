@@ -16,7 +16,7 @@ import pt.iade.sustainableProducts.models.repositories.CategoriaRepository;
 
 
 @RestController
-@RequestMapping(path = "/api/categorias")
+@RequestMapping(path = "/api/produtos/categorias")
 
 public class CategoriaController {
     private Logger logger = LoggerFactory.getLogger(CategoriaController.class);
