@@ -7,9 +7,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
@@ -18,17 +21,20 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 public class Produto {
     
-    @Id @GeneratedValue
-(strategy = GenerationType.IDENTITY) 
+        @Id @GeneratedValue
+    (strategy = GenerationType.IDENTITY) 
 
- private int prod_id;
- private String prod_nome;
- private double prod_preco;
- private String prod_marca;
+    private int prod_id;
+    private String prod_nome;
+    private double prod_preco;
+    private String prod_marca;
 
     @OneToMany @JoinColumn(name="catprod_fk_prod")
     @JsonIgnoreProperties("produto")
     private List<CategoriaProduto> categoriaprodutos;
+
+    @JsonIgnore private int  prod_fk_stock;
+    @ManyToOne @MapsId("stock_id") @JoinColumn(name = "prod_fk_stock")  private Stock stock;
 
     public Produto() {}
 
@@ -65,7 +71,14 @@ public class Produto {
         return categoriaprodutos;
     }
 
+    public Stock getStock() {
+        return stock;
+    }
+
+
+}
+
     
 
     
-}
+

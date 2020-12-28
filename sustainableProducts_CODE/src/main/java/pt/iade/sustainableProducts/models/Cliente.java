@@ -8,52 +8,62 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+// Classe pode ser utlizada para fazer o historico de encomendas de um ou mais clientes.
 
 @Entity
 @Table(name = "clientes")
-public class Cliente {
-    @Id @GeneratedValue
- (strategy = GenerationType.IDENTITY)
-    @Column(name= "Cli_id") private int Cli_id;
-    @Column(name= "Cli_tipo_Cartao") private String Cli_tipo_Cartao;
-    @Column(name= "Cli_num_Cartao") private int Cli_num_Cartao;
-    @OneToMany @JoinColumn(name="Enc_cli_id") private List<Encomenda> encomendas; 
+public class Cliente  {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+   
+    @Column(name = "Cli_id") private int Cli_id;  
+    @Column(name = "Cli_tipo_Cartao") private String Cli_tipo_Cartao;
+    @Column(name = "Cli_num_Cartao") private int Cli_num_Cartao;
+    
+    @JsonIgnore private int cli_fk_uti;
+                                
+    @ManyToOne @MapsId("uti_id") @JoinColumn(name = "cli_fk_uti")  private Utilizador utilizador;
 
-    public Cliente() {}
+    @OneToMany @JoinColumn(name = "Enc_cli_id")  @JsonIgnoreProperties("cliente") private List<Encomenda> encomendas;
+
+    public Cliente() {
+    }
 
     public int getCli_id() {
         return Cli_id;
-    }
-
-    public void setCli_id(int cli_id) {
-        Cli_id = cli_id;
     }
 
     public String getCli_tipo_Cartao() {
         return Cli_tipo_Cartao;
     }
 
-    public void setCli_tipo_Cartao(String cli_tipo_Cartao) {
-        Cli_tipo_Cartao = cli_tipo_Cartao;
-    }
-
     public int getCli_num_Cartao() {
         return Cli_num_Cartao;
     }
 
-    public void setCli_num_Cartao(int cli_num_Cartao) {
-        Cli_num_Cartao = cli_num_Cartao;
+
+    public Utilizador getUtilizador() {
+        return utilizador;
     }
 
-    
+    public List<Encomenda> getEncomendas() {
+        return encomendas;
+    }
 
-    
+  
 
-   
+
+
+
+
 
     
     
