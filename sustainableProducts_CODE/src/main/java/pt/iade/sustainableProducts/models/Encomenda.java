@@ -104,6 +104,12 @@ public class Encomenda {
         this.carrinhos = carrinhos;
     }
 
+    public List<VendedorEncomendas> getVend_encomendas() {
+        return vend_encomendas;
+    }
+
+  
+
     /*public Pagamento getPagamento() {
         return pagamento;
     }
@@ -111,6 +117,8 @@ public class Encomenda {
     public void setPagamento(Pagamento pagamento) {
         this.pagamento = pagamento;
     }*/
+
+    
 
     
 
