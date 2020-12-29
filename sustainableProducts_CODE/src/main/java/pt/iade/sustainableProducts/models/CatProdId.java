@@ -25,20 +25,10 @@ public class CatProdId implements Serializable {
         return cat_id;
     }
 
-    public void setCat_id(int cat_id) {
-        this.cat_id = cat_id;
-    }
-
     public int getProd_id() {
         return prod_id;
     }
 
-    public void setProd_id(int prod_id) {
-        this.prod_id = prod_id;
-    }
-
-
-  
 
 
     
