@@ -38,6 +38,11 @@ public class Encomenda {
     @OneToMany @JoinColumn(name="Carr_fk_enc") @JsonIgnoreProperties("encomenda")
     private List<Carrinho> carrinhos;
 
+    @OneToMany @JoinColumn(name="vend_enc_fk_enc") @JsonIgnoreProperties("encomenda")
+    private List<VendedorEncomendas> vend_encomendas;
+
+
+
  // As mesmas duvidas apresentadas na classe Pagamento também se aplican aqui 
  // O cascade é utilizado para não termos conflitos qunado estivermos a guardar a encomenda com o seu pagamento. Nã sei 
  // se há uma outra forma de se fazer mas esta é a q encontrei. Qualquer coisa pergunto ao Bugalho
