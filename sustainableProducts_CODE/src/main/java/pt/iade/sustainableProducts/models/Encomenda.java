@@ -31,9 +31,12 @@ public class Encomenda {
     @Column(name="Enc_preco_Porte") private double Enc_preco_Porte;
     @Column(name="Enc_preco_Total") private double Enc_preco_Total;
 
+
     @JsonIgnore private int Enc_cli_id;
     //pk                             //fk
     @ManyToOne @MapsId("cli_id") @JoinColumn(name = "Enc_cli_id")  @JsonIgnoreProperties("encomendas")  private Cliente cliente;
+
+    @OneToOne(cascade= CascadeType.ALL) @MapsId("Pag_id") @JoinColumn(name="Enc_fk_pag") private Pagamento pagamento;
 
     @OneToMany @JoinColumn(name="Carr_fk_enc") @JsonIgnoreProperties("encomenda")
     private List<Carrinho> carrinhos;
@@ -43,11 +46,10 @@ public class Encomenda {
 
 
 
- // As mesmas duvidas apresentadas na classe Pagamento também se aplican aqui 
+  
  // O cascade é utilizado para não termos conflitos qunado estivermos a guardar a encomenda com o seu pagamento. Nã sei 
  // se há uma outra forma de se fazer mas esta é a q encontrei. Qualquer coisa pergunto ao Bugalho
 
-   //@OneToOne(cascade= CascadeType.ALL) @MapsId("Pag_id") @JoinColumn(name = "Pag_id") private Pagamento pagamento;
 
 
     public Encomenda() {}
@@ -103,24 +105,10 @@ public class Encomenda {
         return vend_encomendas;
     }
 
-  
 
-    /*public Pagamento getPagamento() {
+    public Pagamento getPagamento() {
         return pagamento;
-    }
-
-    public void setPagamento(Pagamento pagamento) {
-        this.pagamento = pagamento;
-    }*/
-
-    
-
-    
-
-    
-
-   
-
+    }      
 
     
 }
