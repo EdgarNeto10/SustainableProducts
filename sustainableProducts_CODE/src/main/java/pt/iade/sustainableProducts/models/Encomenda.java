@@ -86,11 +86,6 @@ public class Encomenda {
 
   
 
-    public int getEnc_cli_id() {
-        return Enc_cli_id;
-    }
-
-   
 
     public Cliente getCliente() {
         return cliente;
