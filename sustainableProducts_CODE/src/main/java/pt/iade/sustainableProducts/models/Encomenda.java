@@ -1,6 +1,7 @@
 package pt.iade.sustainableProducts.models;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -11,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -32,6 +34,9 @@ public class Encomenda {
     @JsonIgnore private int Enc_cli_id;
     //pk                             //fk
     @ManyToOne @MapsId("cli_id") @JoinColumn(name = "Enc_cli_id")  @JsonIgnoreProperties("encomendas")  private Cliente cliente;
+
+    @OneToMany @JoinColumn(name="Carr_fk_enc") @JsonIgnoreProperties("encomenda")
+    private List<Carrinho> carrinhos;
 
  // As mesmas duvidas apresentadas na classe Pagamento também se aplican aqui 
  // O cascade é utilizado para não termos conflitos qunado estivermos a guardar a encomenda com o seu pagamento. Nã sei 
@@ -86,6 +91,14 @@ public class Encomenda {
         return cliente;
     }
 
+    public List<Carrinho> getCarrinhos() {
+        return carrinhos;
+    }
+
+    public void setCarrinhos(List<Carrinho> carrinhos) {
+        this.carrinhos = carrinhos;
+    }
+
     /*public Pagamento getPagamento() {
         return pagamento;
     }
@@ -93,6 +106,8 @@ public class Encomenda {
     public void setPagamento(Pagamento pagamento) {
         this.pagamento = pagamento;
     }*/
+
+    
 
     
 
