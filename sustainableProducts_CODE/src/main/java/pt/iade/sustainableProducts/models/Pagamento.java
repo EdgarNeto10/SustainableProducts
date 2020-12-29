@@ -28,6 +28,8 @@ public class Pagamento {
   // Dúvida: Esta é uma relação de um para um com a tabela das encomendas. Qual vai ser o nome da joinColumn, 
   //visto que não temos uma coluna na encomenda para pagamento. Seria correto por o nome da Join Column como "Pag_totalCompra" e nas encomendas como "Enc_preco_Total"?
   // Ou então a join column do pagamento seria a Enc_id e da encomenda seria o pag_id?
+
+  //R:Acho q tem q se adicionar uma coluna em pagamento q seria uma chave estrangeira.  
     
    //@OneToOne @MapsId("Enc_id") @JoinColumn(name="Enc_id") private Encomenda encomenda;
 
