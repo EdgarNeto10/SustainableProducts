@@ -24,9 +24,10 @@ public class Cliente  {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
    
-    @Column(name = "Cli_id") private int Cli_id;  
-    @Column(name = "Cli_tipo_Cartao") private String Cli_tipo_Cartao;
+    @Column(name = "Cli_id") private int Cli_id; 
+    @Column(name = "Cli_tipo_Cartao") private String Cli_tipo_Cartao; 
     @Column(name = "Cli_num_Cartao") private int Cli_num_Cartao;
+   
     
     @JsonIgnore private int cli_fk_uti;
                                 

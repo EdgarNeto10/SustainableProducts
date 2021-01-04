@@ -23,7 +23,7 @@ public class Produto {
     
         @Id @GeneratedValue
     (strategy = GenerationType.IDENTITY) 
-
+    
     private int prod_id;
     private String prod_nome;
     private double prod_preco;
