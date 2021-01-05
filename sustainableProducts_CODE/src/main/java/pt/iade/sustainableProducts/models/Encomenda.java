@@ -38,8 +38,10 @@ public class Encomenda {
 
     @OneToOne(cascade= CascadeType.ALL) @MapsId("Pag_id") @JoinColumn(name="Enc_fk_pag") private Pagamento pagamento;
 
-    @OneToMany @JoinColumn(name="Carr_fk_enc") @JsonIgnoreProperties("encomenda")
-    private List<Carrinho> carrinhos;
+   /*@OneToMany @JoinColumn(name="Carr_fk_enc") @JsonIgnoreProperties("encomenda")
+    private List<Carrinho> carrinhos;*/
+
+    @OneToOne(cascade= CascadeType.ALL) @MapsId("Carr_id") @JoinColumn(name="Enc_fk_carr") private Carrinho carrinho;
 
     @OneToMany @JoinColumn(name="vend_enc_fk_enc") @JsonIgnoreProperties("encomenda")
     private List<VendedorEncomendas> vend_encomendas;
@@ -58,8 +60,6 @@ public class Encomenda {
         return Enc_id;
     }
 
-
-
     public LocalDate getEnc_data_Envio() {
         return Enc_data_Envio;
     }
@@ -70,17 +70,21 @@ public class Encomenda {
         return Enc_local_Entrega;
     }
 
- 
+    
+
     public String getEnc_Estado() {
         return Enc_Estado;
     }
 
-   
+    public void setEnc_Estado(String enc_Estado) {
+        Enc_Estado = enc_Estado;
+    }
+
     public double getEnc_preco_Porte() {
         return Enc_preco_Porte;
     }
 
-   
+  
 
     public double getEnc_preco_Total() {
         return Enc_preco_Total;
@@ -88,27 +92,30 @@ public class Encomenda {
 
   
 
+    public int getEnc_cli_id() {
+        return Enc_cli_id;
+    }
 
+   
     public Cliente getCliente() {
         return cliente;
     }
 
-    public List<Carrinho> getCarrinhos() {
-        return carrinhos;
+   
+
+    public Pagamento getPagamento() {
+        return pagamento;
     }
 
-    public void setCarrinhos(List<Carrinho> carrinhos) {
-        this.carrinhos = carrinhos;
+    
+
+    public Carrinho getCarrinho() {
+        return carrinho;
     }
+
 
     public List<VendedorEncomendas> getVend_encomendas() {
         return vend_encomendas;
     }
-
-
-    public Pagamento getPagamento() {
-        return pagamento;
-    }      
-
-    
+ 
 }

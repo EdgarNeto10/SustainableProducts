@@ -28,6 +28,7 @@ public class Produto {
     private String prod_nome;
     private double prod_preco;
     private String prod_marca;
+    private String prod_descricao;
 
     @OneToMany @JoinColumn(name="catprod_fk_prod")
     @JsonIgnoreProperties("produto")
@@ -36,8 +37,7 @@ public class Produto {
     @JsonIgnore private int  prod_fk_stock;
     @ManyToOne @MapsId("stock_id") @JoinColumn(name = "prod_fk_stock")  private Stock stock;
 
-    @OneToMany @JoinColumn(name="Carr_fk_prod") @JsonIgnoreProperties("produto")
-    private List<Carrinho> carrinhos;
+    
 
     public Produto() {}
 
@@ -78,15 +78,12 @@ public class Produto {
         return stock;
     }
 
-    public List<Carrinho> getCarrinhos() {
-        return carrinhos;
-    }
-
-    public void setCarrinhos(List<Carrinho> carrinhos) {
-        this.carrinhos = carrinhos;
+    public String getDescricao(){
+        return prod_descricao;
     }
 
     
+   
 
 
 }
