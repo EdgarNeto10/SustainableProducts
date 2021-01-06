@@ -28,7 +28,7 @@ public class Carrinho {
     @Column(name= "Carr_quant_prod") private int Carr_quant_prod;
     @Column(name= "Carr_preco_total") private double Carr_preco_total;
 
-    @OneToMany @JoinColumn(name = "Prod_fk_carr")  @JsonIgnoreProperties("carrinho") private List<Produto> produtos;
+    @OneToMany @JoinColumn(name = "carrprod_fk_carr")  @JsonIgnoreProperties("carrinho") private List<CarrinhoProduto> carrinhoprodutos;
     
     public Carrinho() {}
 
@@ -48,13 +48,17 @@ public class Carrinho {
         Carr_preco_total = carr_preco_total;
     }
 
-    public List<Produto> getProdutos() {
-        return produtos;
+    public List<CarrinhoProduto> getCarrinhoprodutos() {
+        return carrinhoprodutos;
     }
 
-    public void setProdutos(List<Produto> produtos) {
-        this.produtos = produtos;
-    };
+    public void setCarrinhoprodutos(List<CarrinhoProduto> carrinhoprodutos) {
+        this.carrinhoprodutos = carrinhoprodutos;
+    }
+
+   
+
+  
 
     
 }
