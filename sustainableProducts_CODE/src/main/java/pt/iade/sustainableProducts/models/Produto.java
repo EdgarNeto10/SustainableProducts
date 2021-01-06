@@ -2,6 +2,7 @@ package pt.iade.sustainableProducts.models;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,11 +25,11 @@ public class Produto {
         @Id @GeneratedValue
     (strategy = GenerationType.IDENTITY) 
     
-    private int prod_id;
-    private String prod_nome;
-    private double prod_preco;
-    private String prod_marca;
-    private String prod_descricao;
+    @Column(name = "prod_id") private int id;
+    @Column(name = "prod_nome") private String nome;
+    @Column(name = "prod_preco") private double preco;
+    @Column(name = "prod_marca") private String marca;
+    @Column(name = "prod_descricao") private String descricao;
 
     @OneToMany @JoinColumn(name="catprod_fk_prod")
     @JsonIgnoreProperties("produto")
@@ -42,46 +43,54 @@ public class Produto {
     public Produto() {}
 
     public int getId() {
-        return prod_id;
+        return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getNome() {
-        return prod_nome ;
+        return nome;
     }
 
-    public void setNome(String prod_nome ) {
-        this.prod_nome  = prod_nome ;
-    }
+   
 
     public double getPreco() {
-        return prod_preco;
+        return preco;
     }
 
-    public void setPreco(double prod_preco) {
-        this.prod_preco = prod_preco;
-    }
+   
 
     public String getMarca() {
-        return prod_marca;
+        return marca;
     }
 
-    public void setMarca(String prod_marca) {
-        this.prod_marca = prod_marca;
+   
+
+    public String getDescricao() {
+        return descricao;
     }
 
+  
     public List<CategoriaProduto> getCategoriaprodutos() {
         return categoriaprodutos;
     }
+
+   
+
+    public int getProd_fk_stock() {
+        return prod_fk_stock;
+    }
+
+  
 
     public Stock getStock() {
         return stock;
     }
 
-    public String getDescricao(){
-        return prod_descricao;
-    }
 
+    
     
    
 

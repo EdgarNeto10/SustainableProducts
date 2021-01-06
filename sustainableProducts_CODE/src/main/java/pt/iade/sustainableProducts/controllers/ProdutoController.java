@@ -15,20 +15,17 @@ import org.springframework.web.bind.annotation.RestController;
 import pt.iade.sustainableProducts.models.Produto;
 import pt.iade.sustainableProducts.models.repositories.ProdutoRepository;
 
-
-
 @RestController
 @RequestMapping(path = "/api/categorias/produtos")
 
 public class ProdutoController {
 
     private Logger logger = LoggerFactory.getLogger(ProdutoController.class);
- 
+
     @Autowired
     private ProdutoRepository produtoRepository;
 
-    @GetMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE) 
-
+    @GetMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
 
     public Iterable<Produto> getProdutos() {
         logger.info("Sending all products");
@@ -37,10 +34,19 @@ public class ProdutoController {
 
     @GetMapping(path = "/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Produto getProduto(@PathVariable int id) {
-         logger.info("Sending category with id "+id);
-         Optional<Produto> _produto = produtoRepository.findById(id);
-         return _produto.get();
-      
-         
+        logger.info("Sending category with id " + id);
+        Optional<Produto> _produto = produtoRepository.findById(id);
+        return _produto.get();
+
     }
+
+    @GetMapping(path = "/{text:[^0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE )
+    public Iterable<Produto> getProdutoM(
+    @PathVariable(value = "text") String text) {
+    logger.info("Produto with marca "+text);
+    return produtoRepository.findByMarca(text);
+    }
+
+
+
 }

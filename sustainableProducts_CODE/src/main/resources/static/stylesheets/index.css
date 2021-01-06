@@ -133,7 +133,7 @@ li.dropdown {
 /* grid display */
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   grid-gap: 1.9rem;
   justify-items: center;
   margin: 0;
