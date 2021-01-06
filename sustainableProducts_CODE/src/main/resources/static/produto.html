@@ -11,7 +11,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 
-    <script src="javascripts/produtos.js?$$REVISION$$"></script>
+    <script src="javascripts/produto.js?$$REVISION$$"></script>
 
 
 
@@ -43,7 +43,25 @@
     </nav>
 
     <main>
-        <input type="button" value="Add Prod" onclick="add()">
+        <section id= 'produto'> 
+        <div class="gallery-grid" id="produtos"> </div>
+        
+        </section>
+        
+        <section id='carrinho'> 
+            
+            <h1>Descrição</h1> 
+            <p id= 'descricao'>Valeu a pena? Tudo vale a pena
+                Se a alma não é pequena.
+                Quem quer passar além do Bojador
+                Tem que passar além da dor.
+                Deus ao mar o perigo e o abismo deu,
+                Mas nele é que espelhou o céu.
+            </p>           
+            <input type="button" value="Add Prod" onclick="add()">
+        
+        
+        </section>
         <p id="result"></p>
     </main>
 

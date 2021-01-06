@@ -34,7 +34,7 @@ public class ProdutoController {
 
     @GetMapping(path = "/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Produto getProduto(@PathVariable int id) {
-        logger.info("Sending category with id " + id);
+        logger.info("Sending produto with id " + id);
         Optional<Produto> _produto = produtoRepository.findById(id);
         return _produto.get();
 

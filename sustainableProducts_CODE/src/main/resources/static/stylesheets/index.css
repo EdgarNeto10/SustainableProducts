@@ -25,7 +25,22 @@ body{
   main{
   grid-area: main;/*Diz ao sistema o local da pagina que determinado elemento deve ser colocado */ 
   width: auto;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns:repeat(4,1f);
+  grid-gap:10px; /*Abre um intervalo entre as colunas*/
+  grid-template-areas:
+    'prod prod carr carr  ';
+  grid-template-columns: auto auto auto ;
+  
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;    
+
+  }
+
+  #produto{
+    grid-area: prod;
+  }
+  #carrinho{
+    grid-area: carr;
   }
 
   footer {
@@ -159,3 +174,5 @@ li.dropdown {
 .gallery-img:hover {
   opacity: .7;
 }
+
+
