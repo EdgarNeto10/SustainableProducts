@@ -17,7 +17,7 @@ window.onload = async function () {
         let html3 = "";
         for (let prod of categoria.categoriaprodutos){
             html += ` <figure class="gallery-frame" id=${prod.produto.id} ><img class="gallery-img" src="../images/logoSP.jpg"><figcaption>${prod.produto.nome} - preço: €${prod.produto.preco}</figcaption></figure>`
-            //A chamar as marcas
+            //A chamar as marcas por categoria
             html3 += ` <a href="#"> ${prod.produto.marca} </a>`
 
         }
