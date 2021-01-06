@@ -13,7 +13,7 @@ window.onload = async function () {
         let html = "";
         let html3 = "";
         for (let prod of produtos){
-            html += ` <figure class="gallery-frame" id=${prod.id} ><img class="gallery-img" src="../images/logoSP.jpg"><figcaption>${prod.nome} - preço: €${prod.preco}</figcaption></figure>`
+            html += ` <figure class="gallery-frame" onclick='showProduto (id=${prod.id})' ><img class="gallery-img" src="../images/logoSP.jpg"><figcaption>${prod.nome} - preço: €${prod.preco}</figcaption></figure>`
             //A chamar as marcas
             html3 += ` <a href="#"> ${prod.marca} </a>`
 
@@ -47,4 +47,9 @@ window.onload = async function () {
 function showCategoria(idcat) {
     sessionStorage.setItem("categoriaId", idcat);
     //window.location = "categoria.html";
+}
+
+function showProduto(idprod) {
+    sessionStorage.setItem("produtoId", idprod);
+    window.location = "produto.html";
 }
