@@ -43,7 +43,19 @@ window.onload = async function () {
         for (let cat of categorias)
             html2 += ` <a href="categoria.html" onclick='showCategoria(${cat.cat_id})' )> ${cat.cat_nome} </a>`
         cats.innerHTML = html2;
-    
+
+
+        // Chamar um determinado cliente e pôr na sessionStorage
+        let cliente = await $.ajax({
+            url: "/api/clientes/14",
+            method: "get",
+            dataType: "json"
+        });
+        
+        // A pegar o id do carrimho no cliente
+        sessionStorage.setItem("carrinhoId", cliente.carrinho.carr_id);
+        
+       
     } 
       
     catch (err) {

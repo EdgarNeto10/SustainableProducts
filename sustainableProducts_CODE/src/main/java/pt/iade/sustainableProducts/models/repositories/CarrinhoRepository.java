@@ -23,3 +23,4 @@ public interface CarrinhoRepository extends CrudRepository<Carrinho, Integer> {
     nativeQuery=true)
     void addProdToCart(@Param("carrprod") CarrinhoProduto carrprod);
 }
+

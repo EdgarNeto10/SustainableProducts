@@ -1,10 +1,14 @@
 var produtoId;
+var carrinhoId;
 window.onload = async function () {
     let prods = document.getElementById("produtos");
     let cats = document.getElementById("categorias");
     let marcs = document.getElementById("marcas");
 
     produtoId= sessionStorage.getItem("produtoId");
+    carrinhoId= sessionStorage.getItem("carrinhoId");
+
+
     try {
         
         //A Chamar os produtos na galeria
@@ -83,7 +87,7 @@ function showProduto(idprod) {
 
 //Post: Adding a product to cart
 async function add() {
-    let carrid=3
+    let carrid= carrinhoId
     let data = {
         produto: { id: parseInt(produtoId) },
         carrinho:  {carr_id: parseInt(carrid)}
@@ -91,10 +95,12 @@ async function add() {
     try {
         let result = await $.ajax({
             url: `/api/carrinhos/${produtoId}/produtos`,
-            method: "post", data: JSON.stringify(data),
-            dataType: "json", contentType: "application/json"
+            method: "post",
+            data: JSON.stringify(data),
+            dataType: "json", 
+            contentType: "application/json"
         });
-        document.getElementById("result").innerHTML = result.msg;
+        document.getElementById("result").innerHTML = "Produdo adicionado ao carrinho com sucesso";
     } catch (err) { console.log(err); }
 }
 
