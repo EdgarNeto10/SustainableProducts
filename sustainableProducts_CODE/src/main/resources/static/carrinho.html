@@ -6,18 +6,16 @@
     <title>SustainableProducts</title>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="./stylesheets/index.css">
-    <link rel="stylesheet" href="./stylesheets/produto.css">
 
     <!-- Biblioteca -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+    <!--<script src="javascripts/produtos.js?$$REVISION$$"></script>-->
 
-    <script src="javascripts/produto.js?$$REVISION$$"></script>
-
-      <!--carrinho-->
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">       
-      
+    <!--carrinho-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">       
+    
 
 
 
@@ -45,31 +43,24 @@
                 </div>
             </li>
             <li style="cursor: pointer;float:right" onclick="location.href = 'carrinho.html'" id="carr"><i  class="fa fa-shopping-cart" style="font-size:48px;color:rgb(211, 255, 185)"></i> </li>
-            <li style="float:right"><a href="#about">Sobre</a></li>
+            <li style="float:right" id="sobre"><a href="#about">Sobre</a></li>
         </ul>
     </nav>
 
     <main>
-        <section id= 'produto'> 
-        <div class="gallery-grid" id="produtos"> </div>
+        <h1>Carrinho de compras</h1>
         
+        <section id="produtos">
+            <p style="font-size: 50px;color: rgb(43, 32, 32) "> <img src="./images/logoSP.jpg" style="width: 100px;height: 100px">Adidas tenis90s preço : €32</p>
+            <p style="font-size: 50px;color: rgb(43, 32, 32) "> <img src="./images/logoSP.jpg" style="width: 100px;height: 100px">Adidas tenis90s preço : €32</p>
+            <p style="font-size: 50px;color: rgb(43, 32, 32) "> <img src="./images/logoSP.jpg" style="width: 100px;height: 100px">Adidas tenis90s preço : €32</p>
         </section>
+
+        <input type="button" style="float: right; font-size: medium;" value="Efetuar encomenda">
+       
         
-        <section id='carrinho'> 
-            
-            <h1>Descrição</h1> 
-            <p id= 'descricao'>Valeu a pena? Tudo vale a pena
-                Se a alma não é pequena.
-                Quem quer passar além do Bojador
-                Tem que passar além da dor.
-                Deus ao mar o perigo e o abismo deu,
-                Mas nele é que espelhou o céu.
-            </p>           
-            <input type="button" value="Add Prod" onclick="add()">
-        
-        
-        </section>
-        <p id="result" style="color :green;"></p>
+   
+
     </main>
 
     <footer>

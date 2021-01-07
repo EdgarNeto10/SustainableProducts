@@ -24,15 +24,7 @@ body{
   
   main{
   grid-area: main;/*Diz ao sistema o local da pagina que determinado elemento deve ser colocado */ 
-  width: auto;
-  display: grid;
-  grid-template-columns:repeat(4,1f);
-  grid-gap:10px; /*Abre um intervalo entre as colunas*/
-  grid-template-areas:
-    'prod prod carr carr  ';
-  grid-template-columns: auto auto auto ;
   
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;    
 
   }
 
@@ -84,7 +76,18 @@ ul {
   
   .active {
     background-color: #4CAF50;
+  
   }
+
+  #sobre{
+    border-right:1px solid #bbb;
+  }
+
+  #carr{
+    border-right:2px solid rgb(0, 0, 0);
+  }
+
+  #carr:hover {background-color: #575754;}
 
 
   #logo{
@@ -176,3 +179,6 @@ li.dropdown {
 }
 
 
+section p{
+  border-bottom:3px solid #bbb;
+}
