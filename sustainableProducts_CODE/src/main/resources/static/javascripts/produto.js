@@ -81,3 +81,20 @@ function showProduto(idprod) {
     window.location = "produto.html";
 }
 
+//Post: Adding a product to cart
+async function add() {
+    let carrid=3
+    let data = {
+        produto: { id: parseInt(produtoId) },
+        carrinho:  {carr_id: parseInt(carrid)}
+    };
+    try {
+        let result = await $.ajax({
+            url: `/api/carrinhos/${produtoId}/produtos`,
+            method: "post", data: JSON.stringify(data),
+            dataType: "json", contentType: "application/json"
+        });
+        document.getElementById("result").innerHTML = result.msg;
+    } catch (err) { console.log(err); }
+}
+

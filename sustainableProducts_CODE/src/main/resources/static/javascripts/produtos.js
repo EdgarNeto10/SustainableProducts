@@ -71,3 +71,5 @@ function showProduto(idprod) {
     sessionStorage.setItem("produtoId", idprod);
     window.location = "produto.html";
 }
+
+

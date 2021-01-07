@@ -25,12 +25,17 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class Carrinho {
     @Id @GeneratedValue
  (strategy = GenerationType.IDENTITY)
+    @Column(name="carr_id") private int carr_id;
     @Column(name= "Carr_quant_prod") private int Carr_quant_prod;
     @Column(name= "Carr_preco_total") private double Carr_preco_total;
 
     @OneToMany @JoinColumn(name = "carrprod_fk_carr")  @JsonIgnoreProperties("carrinho") private List<CarrinhoProduto> carrinhoprodutos;
     
     public Carrinho() {}
+
+    public int getCarr_id() {
+        return carr_id;
+    }
 
     public int getCarr_quant_prod() {
         return Carr_quant_prod;
@@ -52,9 +57,10 @@ public class Carrinho {
         return carrinhoprodutos;
     }
 
-    public void setCarrinhoprodutos(List<CarrinhoProduto> carrinhoprodutos) {
-        this.carrinhoprodutos = carrinhoprodutos;
-    }
+
+   
+
+ 
 
    
 
