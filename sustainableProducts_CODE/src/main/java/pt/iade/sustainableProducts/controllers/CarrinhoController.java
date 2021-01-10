@@ -43,32 +43,28 @@ public class CarrinhoController {
 
     }
 
+  
+
+
+
+    @PutMapping(path = "/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public  SimpleResult updateCarrinho(@RequestBody Carrinho carrinho, @PathVariable int id) {
+          //logger.info("updating carrinho with id " + carrprod.getProduto().getId());
+          
+          
+          //carrinho.setCarr_id(id);
+
+          carrinhoRepository.save(carrinho);
+          return new SimpleResult("Added carr with id ", carrinho);
+    
+    }
+
     @PostMapping(path = "/{produtoId}/produtos", produces = MediaType.APPLICATION_JSON_VALUE)
     public SimpleResult saveProductInCart(@RequestBody CarrinhoProduto carrprod) {
         logger.info("Adding prod with id " + carrprod.getProduto().getId());
         carrinhoRepository.addProdToCart(carrprod);
         return new SimpleResult("Added prod with id " + carrprod.getProduto().getId(), carrprod);
 
-    }
-
-
-
-    @PostMapping(path = "/{/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Carrinho updateCarrinho(@RequestBody Carrinho carrinho, @PathVariable int id) {
-    
-        //Optional<Carrinho> newcarrinho = carrinhoRepository.findById(id);
-        
-        /*
-        if (!studentOptional.isPresent())
-            return ResponseEntity.notFound().build();
-        */    
-    
-        //carrinho.setCarr_id(id);
-        
-        return  carrinhoRepository.save(carrinho);
-    
-
-       
     }
     
 

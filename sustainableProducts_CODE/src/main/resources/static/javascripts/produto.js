@@ -133,8 +133,8 @@ async function add() {
         
        
         let result = await $.ajax({
-            url: `/api/carrinhos/${carrinhoId}`,
-            method: "post",
+            url: '/api/carrinhos/'+carrinhoId,
+            method: "put",
             data: JSON.stringify(dataCarr),
             dataType: "json", 
             contentType: "application/json"
@@ -149,6 +149,5 @@ async function add() {
     
    
 }
-
 
 

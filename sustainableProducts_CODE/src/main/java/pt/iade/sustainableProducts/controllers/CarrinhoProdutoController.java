@@ -25,5 +25,7 @@ public class CarrinhoProdutoController {
         logger.info("Sending all categories");
         return carrinhoprodutoRepository.findAll();
     }
+
+    
     
 }
