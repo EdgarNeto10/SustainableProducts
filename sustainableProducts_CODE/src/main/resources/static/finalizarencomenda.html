@@ -10,7 +10,7 @@
     <!-- Biblioteca -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    <script src="javascripts/carrinho.js?$$REVISION$$"></script>
+    <script src="javascripts/finalizarEncomenda.js"></script>
 
     <!--carrinho-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -48,21 +48,45 @@
     </nav>
 
     <main>
-        <h1>Carrinho de compras</h1>
+        <h1>Finalizar Encomenda</h1>
+        <h2>Dados do cliente</h2>
+        <section id="cliente">
+
+        </section>
+
+        <h2>Métodos de Envio</h2>
+        <section id="envio">
+            <p>
+            <input type="radio" id="porte" name="metodo" value=2,95>
+            <label>2,95 € Envio Standard - 2 a 5 dias úteis</label><br>
+            <input type="radio" id="porte" name="metodo" value=3,95>
+            <label> 3,95 € Envio Expresso - 1 a 2 dias úteis (pagamento até às 15h)</label><br>
+           </p>
+        </section>
+
+        <h2>Produtos da Encomenda</h2>
+        <section id="produtos">
+
+        </section>
+
         <section id="total">
 
         </section>
-        
 
-        <section id="produtos">
-           
-            
+        <section id="error">
+
         </section>
 
-        <input type="button" style="float: right; font-size: medium;" value="Finalizar encomenda" onclick="location.href = 'finalizarencomenda.html'">
-       
+
         
-   
+
+ <!--
+         Template para galeria de produtos
+        <figure class="gallery-frame">
+        <img class="gallery-img" src="./images/logoSP.jpg">
+        <figcaption>IImage Title - preço: 120€</figcaption>
+       </figure>
+ -->
 
     </main>
 
