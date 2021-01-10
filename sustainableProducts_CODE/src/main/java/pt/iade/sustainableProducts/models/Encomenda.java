@@ -1,6 +1,6 @@
 package pt.iade.sustainableProducts.models;
 
-import java.time.LocalDate;
+import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -24,22 +24,23 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class Encomenda {
     @Id @GeneratedValue
  (strategy = GenerationType.IDENTITY)
-    @Column(name= "Enc_id") private int Enc_id;
-    @Column(name= "Enc_data_Envio") private LocalDate Enc_data_Envio;
-    @Column(name="Enc_local_Entrega") private String Enc_local_Entrega;
-    @Column(name="Enc_Estado") private String Enc_Estado;
-    @Column(name="Enc_preco_Porte") private double Enc_preco_Porte;
-    @Column(name="Enc_preco_Total") private double Enc_preco_Total;
+    @Column(name= "Enc_id") private int id;
+    @Column(name= "Enc_data_Envio") private Date dataenvio;
+    @Column(name="Enc_local_Entrega") private String localentrega;
+    @Column(name="Enc_Estado") private String estado;
+    @Column(name="Enc_preco_Porte") private double precoporte;
+    @Column(name="Enc_preco_Total") private double precototal;
+    
 
 
     @JsonIgnore private int Enc_cli_id;
     //pk                             //fk
     @ManyToOne @MapsId("cli_id") @JoinColumn(name = "Enc_cli_id")  @JsonIgnoreProperties("encomendas")  private Cliente cliente;
 
-    @OneToOne(cascade= CascadeType.ALL) @MapsId("Pag_id") @JoinColumn(name="Enc_fk_pag") private Pagamento pagamento;
+    
 
-   /*@OneToMany @JoinColumn(name="Carr_fk_enc") @JsonIgnoreProperties("encomenda")
-    private List<Carrinho> carrinhos;*/
+   
+    @JsonIgnore private int Enc_fk_carr;
 
     @OneToOne(cascade= CascadeType.ALL) @MapsId("Carr_id") @JoinColumn(name="Enc_fk_carr") private Carrinho carrinho;
 
@@ -56,55 +57,58 @@ public class Encomenda {
 
     public Encomenda() {}
 
-    public int getEnc_id() {
-        return Enc_id;
+    public int getId() {
+        return id;
     }
 
-    public LocalDate getEnc_data_Envio() {
-        return Enc_data_Envio;
-    }
 
-  
-
-    public String getEnc_local_Entrega() {
-        return Enc_local_Entrega;
+    public Date getDataenvio() {
+        return dataenvio;
     }
 
     
-
-    public String getEnc_Estado() {
-        return Enc_Estado;
+    public String getLocalentrega() {
+        return localentrega;
     }
 
-    public void setEnc_Estado(String enc_Estado) {
-        Enc_Estado = enc_Estado;
-    }
+   
 
-    public double getEnc_preco_Porte() {
-        return Enc_preco_Porte;
+    public String getEstado() {
+        return estado;
     }
 
   
 
-    public double getEnc_preco_Total() {
-        return Enc_preco_Total;
+    public double getPrecoporte() {
+        return precoporte;
     }
 
-  
+    public void setPrecoporte(double precoporte) {
+        this.precoporte = precoporte;
+    }
+
+    public double getPrecototal() {
+        return precototal;
+    }
+
+    public void setPrecototal(double precototal) {
+        this.precototal = precototal;
+    }
 
     public int getEnc_cli_id() {
         return Enc_cli_id;
     }
 
-   
+  
+
     public Cliente getCliente() {
         return cliente;
     }
 
    
 
-    public Pagamento getPagamento() {
-        return pagamento;
+    public int getEnc_fk_carr() {
+        return Enc_fk_carr;
     }
 
     
@@ -113,9 +117,20 @@ public class Encomenda {
         return carrinho;
     }
 
+    public void setCarrinho(Carrinho carrinho) {
+        this.carrinho = carrinho;
+    }
 
     public List<VendedorEncomendas> getVend_encomendas() {
         return vend_encomendas;
     }
+
+    
+
+    
+
+   
+
+
  
 }

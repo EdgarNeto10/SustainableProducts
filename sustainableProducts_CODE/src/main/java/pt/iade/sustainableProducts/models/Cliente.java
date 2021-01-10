@@ -67,6 +67,14 @@ public class Cliente  {
         return carrinho;
     }
 
+    public int getCli_fk_uti() {
+        return cli_fk_uti;
+    }
+
+   
+
+    
+
   
     
 
