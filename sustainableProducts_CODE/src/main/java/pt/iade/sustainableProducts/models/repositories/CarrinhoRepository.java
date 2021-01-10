@@ -14,6 +14,7 @@ import pt.iade.sustainableProducts.models.CarrinhoProduto;
 public interface CarrinhoRepository extends CrudRepository<Carrinho, Integer> {
     Optional<Carrinho> findById(int id);
 
+    
     @Modifying
     @Transactional
     @Query(value="Insert into carrinho_produtos "+
@@ -22,5 +23,9 @@ public interface CarrinhoRepository extends CrudRepository<Carrinho, Integer> {
     ":#{#carrprod.produto.id})",
     nativeQuery=true)
     void addProdToCart(@Param("carrprod") CarrinhoProduto carrprod);
+
+
+
+
 }
 

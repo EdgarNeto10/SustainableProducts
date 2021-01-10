@@ -8,6 +8,10 @@ window.onload = async function () {
     produtoId= sessionStorage.getItem("produtoId");
     carrinhoId= sessionStorage.getItem("carrinhoId");
 
+ 
+    
+   
+
 
     try {
         
@@ -93,7 +97,7 @@ async function add() {
         carrinho:  {carr_id: parseInt(carrid)}
     };
     try {
-        let result = await $.ajax({
+        let resultt = await $.ajax({
             url: `/api/carrinhos/${produtoId}/produtos`,
             method: "post",
             data: JSON.stringify(data),
@@ -101,6 +105,50 @@ async function add() {
             contentType: "application/json"
         });
         document.getElementById("result").innerHTML = "Produdo adicionado ao carrinho com sucesso";
+
+        
+    
+         // A chamar produtos no carrinho para calcular o preço total e o quantidade dos produtos
+        let carrinho = await $.ajax({
+            url: "/api/carrinhos/"+carrinhoId,
+            method: "get",
+            dataType: "json"
+        });
+
+        var total= 0;
+        var quant=0;
+
+        for (let prods of carrinho.carrinhoprodutos){
+            total+=prods.produto.preco
+            quant+=1
+
+        }
+
+         // A fazer o update dos dados no carrinho
+
+        let dataCarr = {
+            carr_quant_prod: parseInt(quant) ,
+            carr_preco_total:  parseInt(total)
+        };
+        
+       
+        let result = await $.ajax({
+            url: `/api/carrinhos/${carrinhoId}`,
+            method: "post",
+            data: JSON.stringify(dataCarr),
+            dataType: "json", 
+            contentType: "application/json"
+        });
+
+          
+    
+    
     } catch (err) { console.log(err); }
+
+
+    
+   
 }
+
+
 

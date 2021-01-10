@@ -8,6 +8,7 @@ window.onload = async function () {
 
   
     carrinhoId= sessionStorage.getItem("carrinhoId");
+   
 
 
     try {
@@ -75,6 +76,8 @@ window.onload = async function () {
 
 
 
+    
+    
     
     } 
       

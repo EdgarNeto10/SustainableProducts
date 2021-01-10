@@ -54,7 +54,9 @@ window.onload = async function () {
         
         // A pegar o id do carrimho no cliente
         sessionStorage.setItem("carrinhoId", cliente.carrinho.carr_id);
-        
+
+       
+       
        
     } 
       

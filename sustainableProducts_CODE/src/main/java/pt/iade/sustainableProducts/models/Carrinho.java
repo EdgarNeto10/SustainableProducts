@@ -57,6 +57,10 @@ public class Carrinho {
         return carrinhoprodutos;
     }
 
+    public void setCarr_id(int carr_id) {
+        this.carr_id = carr_id;
+    }
+
 
    
 
