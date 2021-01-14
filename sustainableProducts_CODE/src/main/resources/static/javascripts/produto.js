@@ -108,8 +108,26 @@ async function add() {
 
         
     
+        updatecarr();
+          
+    
+    
+    } 
+    catch (err) { console.log(err); }
+
+
+    
+   
+}
+
+
+async function updatecarr() {
+  
+
+    try {
+
          // A chamar produtos no carrinho para calcular o preço total e o quantidade dos produtos
-        let carrinho = await $.ajax({
+         let carrinho = await $.ajax({
             url: "/api/carrinhos/"+carrinhoId,
             method: "get",
             dataType: "json"
@@ -127,8 +145,8 @@ async function add() {
          // A fazer o update dos dados no carrinho
 
         let dataCarr = {
-            carr_quant_prod: parseInt(quant) ,
-            carr_preco_total:  parseInt(total)
+            carr_quant_prod: parseFloat(quant) ,
+            carr_preco_total:  parseFloat(total)
         };
         
        
@@ -140,14 +158,8 @@ async function add() {
             contentType: "application/json"
         });
 
-          
-    
-    
-    } catch (err) { console.log(err); }
-
-
-    
-   
 }
+catch (err) { console.log(err); }
 
+}
 

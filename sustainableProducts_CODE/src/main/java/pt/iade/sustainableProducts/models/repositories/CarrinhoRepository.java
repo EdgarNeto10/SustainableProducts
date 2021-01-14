@@ -17,12 +17,23 @@ public interface CarrinhoRepository extends CrudRepository<Carrinho, Integer> {
     
     @Modifying
     @Transactional
+
     @Query(value="Insert into carrinho_produtos "+
     "(carrprod_fk_carr ,carrprod_fk_prod) "+
     "values(:#{#carrprod.carrinho.carr_id}, "+
     ":#{#carrprod.produto.id})",
     nativeQuery=true)
     void addProdToCart(@Param("carrprod") CarrinhoProduto carrprod);
+
+    
+    @Modifying
+    @Transactional
+    
+    @Query(value="update carrinhos set carr_quant_prod = :#{#carr.carr_quant_prod}, carr_preco_total = :#{#carr.carr_preco_total} where carr_id = :id",nativeQuery=true )
+    void updatecart(@Param("carr") Carrinho carr, @Param("id") int id);
+
+
+
 
 
 

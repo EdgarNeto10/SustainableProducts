@@ -48,14 +48,19 @@ public class CarrinhoController {
 
 
     @PutMapping(path = "/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public  SimpleResult updateCarrinho(@RequestBody Carrinho carrinho, @PathVariable int id) {
-          //logger.info("updating carrinho with id " + carrprod.getProduto().getId());
+    public  SimpleResult updateCarrinho(@RequestBody Carrinho carr, @PathVariable int id) {
           
-          
-          //carrinho.setCarr_id(id);
+          /*
+          carrinho.setCarr_id(id);
 
           carrinhoRepository.save(carrinho);
           return new SimpleResult("Added carr with id ", carrinho);
+        */
+         
+        logger.info("updating carrinho with id " + id);
+        carrinhoRepository.updatecart(carr, id);
+        return new SimpleResult("Added carr with id ", carr);
+
     
     }
 

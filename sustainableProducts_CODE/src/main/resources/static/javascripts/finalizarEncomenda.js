@@ -1,12 +1,18 @@
 var carrinhoId;
+var carrinho;
+var cliente;
+var tot;
+
 window.onload = async function () {
     var client_data = document.getElementById("cliente");
     let cats = document.getElementById("categorias");
     let marcs = document.getElementById("marcas");
     let shipping_methods = document.getElementById("envio")
     var produtos_carr = document.getElementById("produtos");
-    var tot = document.getElementById("total");
+    tot = document.getElementById("total");
     let msgerror = document.getElementById("error")
+
+    
 
 
 
@@ -52,7 +58,7 @@ window.onload = async function () {
 
 
         // A chamar os dados do cliente
-        var cliente = await $.ajax({
+         cliente = await $.ajax({
             url: "/api/clientes/14",
             method: "get",
             dataType: "json"
@@ -63,41 +69,43 @@ window.onload = async function () {
 
 
         // A chamar produtos no carrinho
-        var carrinho = await $.ajax({
+        carrinho = await $.ajax({
             url: "/api/carrinhos/" + carrinhoId,
             method: "get",
             dataType: "json"
         });
-        let html5 = "";
-        var total = 0;
-        let quant = 0
+        html5 = "";
+     
 
 
         for (let prods of carrinho.carrinhoprodutos) {
             html5 += `<p style="font-size: 50px;color: rgb(43, 32, 32) "> <img src="./images/logoSP.jpg" style="width: 100px;height: 100px"> ${prods.produto.nome} - Preço: €${prods.produto.preco}</p>`
 
-
-            // A calcular o preço total do carrinho
-            total += prods.produto.preco
-            quant += 1
-
         }
-        tot.innerHTML = `<p style="float: right;">Total: € ${total} - ${quant} Produtos </p>`
+        let total= 0
+
+        total=carrinho.carr_preco_total + parseFloat(porte)
+
+        tot.innerHTML =  `<p style="float: right;">Total: € ${carrinho.carr_preco_total} - ${carrinho.carr_quant_prod} Produtos </p>`
         produtos_carr.innerHTML = html5;
-
-
-
-
-
-
-
-
+         
+    
     }
     catch (err) {
         console.log(err);
         msgerror.innerHTML = "<h1> Page not available </h1>";
     }
 }
+
+/*
+function calcpreco(){
+    let total=0
+    let porte = document.getElementById("porte").value
+    total = parseFloat(carrinho.carr_preco_total + parseFloat(porte))
+    tot.innerHTML =  `<p style="float: right;">Total: € ${total} - ${carrinho.carr_quant_prod} Produtos </p>`
+
+}
+*/
 
 function showCategoria(idcat) {
     sessionStorage.setItem("categoriaId", idcat);
@@ -113,7 +121,8 @@ function showMarca(marc) {
 
 
 async function encomendar() {
-    var porte = document.getElementById("porte").value
+    let porte = document.getElementById("porte").value
+ 
     now = new Date;
 
     function dataAtualFormatada() {
@@ -126,35 +135,13 @@ async function encomendar() {
         return anoF + "-" + mesF + "-" + diaF;
     }
 
-    var client = await $.ajax({
-        url: "/api/clientes/14",
-        method: "get",
-        dataType: "json"
-    });
-
-    var carrinho = await $.ajax({
-        url: "/api/carrinhos/" + carrinhoId,
-        method: "get",
-        dataType: "json"
-    });
-    var total = 0;
-    let quant = 0
-
-
-    for (let prods of carrinho.carrinhoprodutos) {
-        
-        // A calcular o preço total do carrinho
-        total += prods.produto.preco
-        quant += 1
-
-    }
-    
+  
     let data = {
         dataenvio: dataAtualFormatada(),
         localentrega: "rua lima",
         estado: "Nova",
         precoporte: parseFloat(porte),
-        precototal: parseFloat(parseFloat(porte) + total)
+        precototal: parseFloat(parseFloat(porte) + carrinho.carr_preco_total)
 
     };
    
