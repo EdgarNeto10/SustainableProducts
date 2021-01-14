@@ -48,7 +48,9 @@ O cliente poderá selecionar um produto e efetuar a compra do mesmo.
 1. Depois o sistema irá redirecionar o cliente a lista de produtos da categoria que clicou.
 1. O cliente poderá selecionar o  produto que pretende.
 1. Depois é redirecionado a uma pagina onde poderá visualizar a descrição detalhada do produto e o respectivo preço.
-1. Isto feito, o cliente poderá finalizar a compra do produto.
+1. Isto feito, o cliente poderá adicionar o produto ao seu carrinho.
+1. Depois o cliente poderá finalizar a compra do produto clicando na interface do carrinho.
+1. Isto feito, o cliente terá que escolher o transporte do produto que prefere e por fim clicará em encomendar.
 
 **Pós-condições:**
 - Pagamento efetuado com sucesso.
