@@ -12,7 +12,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -38,7 +37,11 @@ public class Produto {
     @JsonIgnore private int  prod_fk_stock;
     @ManyToOne @MapsId("stock_id") @JoinColumn(name = "prod_fk_stock")  private Stock stock;
 
-    @OneToMany @JoinColumn(name = "carrprod_fk_prod")  @JsonIgnoreProperties("produto") private List<CarrinhoProduto> carrinhoprodutos;
+    @OneToMany @JoinColumn(name = "carrprod_fk_prod")  @JsonIgnoreProperties("produto")
+    private List<CarrinhoProduto> carrinhoprodutos;
+
+     @OneToMany @JoinColumn(name = "encpro_fk_prod")  @JsonIgnoreProperties("produto") 
+     private List<EncomendaProduto> encomendaprodutos;
 
     
 
@@ -99,12 +102,6 @@ public class Produto {
         this.carrinhoprodutos = carrinhoprodutos;
     }
 
-    
-
-
-    
-    
-   
 
 
 }

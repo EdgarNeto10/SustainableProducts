@@ -33,7 +33,7 @@ public class Cliente  {
     
     @JsonIgnore private int cli_fk_uti;
                                 
-    @ManyToOne @MapsId("uti_id") @JoinColumn(name = "cli_fk_uti")  private Utilizador utilizador;
+    @ManyToOne @MapsId("uti_id") @JoinColumn(name = "cli_fk_uti")  @JsonIgnoreProperties("clientes") private Utilizador utilizador;
 
     @OneToMany @JoinColumn(name = "Enc_cli_id")  @JsonIgnoreProperties("cliente") private List<Encomenda> encomendas;
 
