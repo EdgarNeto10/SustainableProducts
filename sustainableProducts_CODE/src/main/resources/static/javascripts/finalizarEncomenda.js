@@ -139,7 +139,7 @@ async function encomendar() {
     let data = {
         dataenvio: dataAtualFormatada(),
         localentrega: "rua lima",
-        estado: "Nova",
+        estado: 0,
         precoporte: parseFloat(porte),
         precototal: parseFloat(parseFloat(porte) + carrinho.carr_preco_total)
 

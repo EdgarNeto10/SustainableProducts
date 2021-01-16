@@ -71,9 +71,6 @@ public class Cliente  {
         return cli_fk_uti;
     }
 
-   
-
-    
 
   
     

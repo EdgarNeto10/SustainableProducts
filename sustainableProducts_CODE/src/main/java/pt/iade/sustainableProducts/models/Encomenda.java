@@ -3,9 +3,11 @@ package pt.iade.sustainableProducts.models;
 import java.sql.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,15 +29,21 @@ public class Encomenda {
     @Column(name= "Enc_id") private int id;
     @Column(name= "Enc_data_Envio") private Date dataenvio;
     @Column(name="Enc_local_Entrega") private String localentrega;
-    @Column(name="Enc_Estado") private String estado;
+    @Column (name="Enc_estado") @Enumerated(EnumType.ORDINAL) private EstadoEncomenda estado;
     @Column(name="Enc_preco_Porte") private double precoporte;
     @Column(name="Enc_preco_Total") private double precototal;
+
     
 
 
     @JsonIgnore private int Enc_cli_id;
     //pk                             //fk
     @ManyToOne @MapsId("cli_id") @JoinColumn(name = "Enc_cli_id")  @JsonIgnoreProperties("encomendas")  private Cliente cliente;
+
+  
+
+
+
 
     
 
@@ -72,12 +80,7 @@ public class Encomenda {
     public String getLocalentrega() {
         return localentrega;
     }
-
-   
-
-    public String getEstado() {
-        return estado;
-    }
+    
 
   
 
@@ -117,10 +120,13 @@ public class Encomenda {
         return encomendaprodutos;
     }
 
-    
+    public EstadoEncomenda getEstado() {
+        return estado;
+    }
 
-  
    
+
+    
 
     
 
