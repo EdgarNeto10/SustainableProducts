@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import pt.iade.sustainableProducts.controllers.results.SimpleResult;
 import pt.iade.sustainableProducts.models.Encomenda;
+import pt.iade.sustainableProducts.models.EncomendaProduto;
 import pt.iade.sustainableProducts.models.repositories.EncomendaRepository;
 
 @RestController
@@ -55,6 +56,14 @@ public class EncomendaController {
         logger.info("Adding encomenda with id " + enc.getId());
         encomendaRepository.addProdsToOrder(enc);
         return new SimpleResult("Added encomenda with id " + enc.getId(), enc);
+
+    }
+
+    @PostMapping(path = "/produtos", produces = MediaType.APPLICATION_JSON_VALUE)
+    public SimpleResult saveProductInCart(@RequestBody EncomendaProduto encprod) {
+        logger.info("Adding prod with id " + encprod.getProduto().getId());
+        encomendaRepository.addProdToEnc(encprod);
+        return new SimpleResult("Added prod with id " ,encprod);
 
     }
 

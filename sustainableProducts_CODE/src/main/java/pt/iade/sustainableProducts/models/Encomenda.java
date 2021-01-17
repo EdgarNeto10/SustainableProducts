@@ -33,9 +33,9 @@ public class Encomenda {
     
 
 
-    @JsonIgnore private int Enc_cli_id;
+    @Column(name="Enc_cli_id") @JsonIgnore private int cli_id;
     //pk                             //fk
-    @ManyToOne @MapsId("cli_id") @JoinColumn(name = "Enc_cli_id")  @JsonIgnoreProperties("encomendas")  private Cliente cliente;
+    @ManyToOne @MapsId("cli_id") @JoinColumn(name = "Enc_cli_id",nullable = false)  @JsonIgnoreProperties("encomendas")  private Cliente cliente;
 
     
 
@@ -97,9 +97,7 @@ public class Encomenda {
         this.precototal = precototal;
     }
 
-    public int getEnc_cli_id() {
-        return Enc_cli_id;
-    }
+  
 
   
 
@@ -116,6 +114,11 @@ public class Encomenda {
     public List<EncomendaProduto> getEncomendaprodutos() {
         return encomendaprodutos;
     }
+
+    public int getCli_id() {
+        return cli_id;
+    }
+
 
     
 

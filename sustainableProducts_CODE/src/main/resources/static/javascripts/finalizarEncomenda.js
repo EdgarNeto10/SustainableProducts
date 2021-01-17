@@ -117,7 +117,7 @@ function showMarca(marc) {
 
 }
 
-
+//Função para enviar os dados relacionados a encomenda
 async function encomendar() {
     let porte = document.getElementById("porte").value
  
@@ -137,14 +137,16 @@ async function encomendar() {
     let data = {
         dataenvio: dataAtualFormatada(),
         localentrega: "rua lima",
-        estado: "Nova",
+        estado: 0,
         precoporte: parseFloat(porte),
-        precototal: parseFloat(parseFloat(porte) + carrinho.carr_preco_total)
+        precototal: parseFloat(parseFloat(porte) + carrinho.carr_preco_total),
+        cli_id: parseInt(14)
 
     };
    
 
     try {
+        /*
         let result = await $.ajax({
             url: `/api/clientes/encomendas`,
             method: "post",
@@ -152,9 +154,68 @@ async function encomendar() {
             dataType: "json",
             contentType: "application/json"
         });
+       */ 
         document.getElementById("result").innerHTML = "Encomenda efectuada com sucesso";
+        saveEncomenda(); 
+   
+   
     } catch (err) { console.log(err); }
 }
 
+
+//Função para salvar os produtos do carrinho na encomenda. 
+async function saveEncomenda() {
+ 
+
+    try {
+        let encomendas = await $.ajax({
+            url: "/api/clientes/encomendas",
+            method: "get",
+            dataType: "json"    
+        });
+         
+        // A pegar o id da ultima encomenda, calculando o maior id na lista.
+        for (let enc of encomendas){
+            var id=0
+            if(enc.id>id){
+                id=enc.id
+            }
+
+        }
+        
+        // A pegar os produtos no carrinho do cliente.
+        let carrinho = await $.ajax({
+            url: "/api/carrinhos/"+carrinhoId,
+            method: "get",        
+            dataType: "json"    
+        });
+
+      // A percorrer a lista de produtos no carrinho, para inserir cada produto na encomenda.
+        for (let carr of carrinho.carrinhoprodutos){
+
+            var datacarr = {
+                produto: { id: parseInt(carr.produto.id)},
+                encomenda:  {id: parseInt(id)}
+            };    
+
+
+
+        let result = await $.ajax({
+            url: `/api/clientes/encomendas/produtos`,
+            method:"post",
+            data: JSON.stringify(datacarr),
+            dataType: "json",
+            contentType: "application/json"
+        });
+        document.getElementById("result").innerHTML = "Encomenda efectuada com sucesso";
+   
+   
+    } 
+}
+    catch (err) { console.log(err);}
+
+
+
+}
 
 
