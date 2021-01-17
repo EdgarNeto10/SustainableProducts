@@ -82,7 +82,9 @@ window.onload = async function () {
             html5 += `<p style="font-size: 50px;color: rgb(43, 32, 32) "> <img src="./images/logoSP.jpg" style="width: 100px;height: 100px"> ${prods.produto.nome} - Preço: €${prods.produto.preco}</p>`
 
         }
+       
     
+
 
         tot.innerHTML =  `<p style="float: right;">Total: € ${carrinho.carr_preco_total} - ${carrinho.carr_quant_prod} Produtos </p>`
         produtos_carr.innerHTML = html5;
