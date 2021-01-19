@@ -6,11 +6,12 @@
     <title>SustainableProducts</title>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="./stylesheets/index.css">
+    <link rel="stylesheet" href="./stylesheets/encomendas.css">
 
     <!-- Biblioteca -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    <script src="javascripts/produtos.js?$$REVISION$$"></script>
+    <script src="javascripts/encomendas.js?$$REVISION$$"></script>
 
     <!--carrinho-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -42,24 +43,20 @@
     
                 </div>
             </li>
-            <li><a href="encomendas.html">Encomendas</a></li>
             <li style="cursor: pointer;float:right" onclick="location.href = 'carrinho.html'" id="carr"><i  class="fa fa-shopping-cart" style="font-size:48px;color:rgb(211, 255, 185)"></i> </li>
             <li style="float:right" id="sobre"><a href="#about">Sobre</a></li>
         </ul>
     </nav>
 
-    <main>
+    <main >
+        <h1>Suas encomendas</h1>
+        <table id='encomendas'>
+           
+           
+        </table>
+     
 
-        <div class="gallery-grid" id="produtos"> </div>
 
-
- <!--
-         Template para galeria de produtos
-        <figure class="gallery-frame">
-        <img class="gallery-img" src="./images/logoSP.jpg">
-        <figcaption>IImage Title - preço: 120€</figcaption>
-       </figure>
- -->
 
     </main>
 

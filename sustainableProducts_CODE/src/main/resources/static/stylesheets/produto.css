@@ -11,3 +11,12 @@ main{
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;    
   
 }
+
+
+#produto{
+  grid-area: prod;
+}
+
+#carrinho{
+  grid-area: carr;
+}

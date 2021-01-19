@@ -36,9 +36,9 @@ public class Encomenda {
     
 
 
-    @Column(name="Enc_cli_id") @JsonIgnore private int cli_id;
+    @Column(name="Enc_cli_id") private int cliid;
     //pk                             //fk
-    @ManyToOne @MapsId("cli_id") @JoinColumn(name = "Enc_cli_id",nullable = false)  @JsonIgnoreProperties("encomendas")  private Cliente cliente;
+    @ManyToOne @MapsId("cli_id") @JoinColumn(name = "Enc_cli_id")  @JsonIgnoreProperties("encomendas")  private Cliente cliente;
 
   
 
@@ -118,17 +118,19 @@ public class Encomenda {
         return encomendaprodutos;
     }
 
-
-    public int getCli_id() {
-        return cli_id;
-    }
-
-
-    
-
     public EstadoEncomenda getEstado() {
         return estado;
     }
+
+    public int getCliid() {
+        return cliid;
+    }
+
+  
+
+   
+
+  
 
 
    

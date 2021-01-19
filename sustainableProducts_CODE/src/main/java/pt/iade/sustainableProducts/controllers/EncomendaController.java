@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import pt.iade.sustainableProducts.controllers.results.SimpleResult;
 import pt.iade.sustainableProducts.models.Encomenda;
 import pt.iade.sustainableProducts.models.EncomendaProduto;
+import pt.iade.sustainableProducts.models.EstadoEncomenda;
 import pt.iade.sustainableProducts.models.repositories.EncomendaRepository;
 
 @RestController

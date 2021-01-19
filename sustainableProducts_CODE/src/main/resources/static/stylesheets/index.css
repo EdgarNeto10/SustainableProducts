@@ -28,12 +28,7 @@ body{
 
   }
 
-  #produto{
-    grid-area: prod;
-  }
-  #carrinho{
-    grid-area: carr;
-  }
+
 
   footer {
     grid-area:footer;
@@ -182,3 +177,4 @@ li.dropdown {
 section p{
   border-bottom:3px solid #bbb;
 }
+

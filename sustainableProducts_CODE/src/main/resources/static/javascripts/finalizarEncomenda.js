@@ -135,20 +135,22 @@ async function encomendar() {
         return anoF + "-" + mesF + "-" + diaF;
     }
 
-  
+
     let data = {
+       
         dataenvio: dataAtualFormatada(),
-        localentrega: "rua lima",
-        estado: 0,
+        localentrega: cliente.utilizador.morada,
+        //estado: 0,
         precoporte: parseFloat(porte),
         precototal: parseFloat(parseFloat(porte) + carrinho.carr_preco_total),
-        cli_id: parseInt(14)
+        cliid: parseInt(14)
 
     };
+ 
    
 
     try {
-        /*
+        
         let result = await $.ajax({
             url: `/api/clientes/encomendas`,
             method: "post",
@@ -156,7 +158,7 @@ async function encomendar() {
             dataType: "json",
             contentType: "application/json"
         });
-       */ 
+   
         document.getElementById("result").innerHTML = "Encomenda efectuada com sucesso";
         saveEncomenda(); 
    
