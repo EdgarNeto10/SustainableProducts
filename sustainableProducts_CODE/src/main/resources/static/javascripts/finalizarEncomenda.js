@@ -140,7 +140,7 @@ async function encomendar() {
        
         dataenvio: dataAtualFormatada(),
         localentrega: cliente.utilizador.morada,
-        //estado: 0,
+        estado: "Nova",
         precoporte: parseFloat(porte),
         precototal: parseFloat(parseFloat(porte) + carrinho.carr_preco_total),
         cliid: parseInt(14)
