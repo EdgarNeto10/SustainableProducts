@@ -211,7 +211,11 @@ async function saveEncomenda() {
             dataType: "json",
             contentType: "application/json"
         });
-        document.getElementById("result").innerHTML = "Encomenda efectuada com sucesso";
+        document.getElementById("result2").innerHTML = "Produtos da encomenda salvos com sucesso";
+       
+        
+        deleteAllProducts();
+    
    
    
     } 
@@ -219,6 +223,25 @@ async function saveEncomenda() {
     catch (err) { console.log(err);}
 
 
+
+}
+
+
+
+// Função para apagar todos os produtos no carrinho
+async function  deleteAllProducts(){
+
+    try {    
+        
+        await $.ajax({
+            url: "/api/carrinhos/produtos/"+carrinhoId,
+            method: "delete",
+            dataType: "json"
+        }); 
+   
+    }
+    catch (err) { console.log(err);
+    }
 
 }
 

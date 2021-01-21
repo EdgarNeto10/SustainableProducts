@@ -45,8 +45,8 @@ window.onload = async function () {
         cats.innerHTML = html2;
 
         //A chamar as encomendas 
-        let encomendas = await $.ajax({
-            url: "/api/clientes/encomendas",
+        let cliente = await $.ajax({
+            url: "/api/clientes/14",
             method: "get",
             dataType: "json"
         });
@@ -60,21 +60,32 @@ window.onload = async function () {
         </tr>`
         
 
-        for (let enc of encomendas){
-            // A preencher a tabela coma as informações da encomenda
     
+       for (let enc of cliente.encomendas){
+                  // Percorrer a lista antes para inserir os produtos em uma string; 
+            htmlpro=''
+            var c=1
+            for (let prods of enc.encomendaprodutos){
+                htmlpro+= `${prods.produto.nome}`
+                if(c<enc.encomendaprodutos.length){
+                htmlpro+= ', '
+                }
+               
+                else{
+                htmlpro+='.'
+                }
+                c++
+
+            }
+            // A preencher a tabela coma as informações da encomenda
             htmlenc+=
 
             `<tr>
             <td>${enc.dataenvio}</td>
-            <td>Cliente: ${enc.cliente.utilizador.nome} <br> Morada de envio: ${enc.cliente.utilizador.morada} </td>
+            <td>Cliente: ${cliente.utilizador.nome} <br> Morada de envio: ${cliente.utilizador.morada} <br> Produtos: ${htmlpro} <br> <p>Preço Total:${enc.precototal}</p>  </td>
             <td>${enc.estado}</td>
             </tr>` 
-
-        
-        
-        }
-
+            }
        
         encomenda.innerHTML=htmlenc;
        

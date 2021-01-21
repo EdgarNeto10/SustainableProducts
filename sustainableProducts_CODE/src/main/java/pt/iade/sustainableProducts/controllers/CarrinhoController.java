@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import pt.iade.sustainableProducts.controllers.results.SimpleResult;
 import pt.iade.sustainableProducts.models.Carrinho;
 import pt.iade.sustainableProducts.models.CarrinhoProduto;
+import pt.iade.sustainableProducts.models.repositories.CarrinhoProdutoRepository;
 import pt.iade.sustainableProducts.models.repositories.CarrinhoRepository;
 
 @RestController
@@ -27,6 +29,8 @@ public class CarrinhoController {
 
     @Autowired
     private CarrinhoRepository carrinhoRepository;
+
+    private CarrinhoProdutoRepository carrinhoprodutoRepository;
 
     @GetMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
 
@@ -71,7 +75,25 @@ public class CarrinhoController {
         return new SimpleResult("Added prod with id " + carrprod.getProduto().getId(), carrprod);
 
     }
-    
+
+     //Apagar todos os produtos de um carrinho
+    @DeleteMapping(path = "produtos/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE )
+    public SimpleResult deleteProductsCart(@PathVariable int id){
+        logger.info("Deleting products in cart ");
+        // No verification to see if it exists
+        carrinhoRepository.deleteProductsCart(id);
+        return new SimpleResult("Deleted products)", null);
+    }
+
+
+    //Apagar um produto de um carrinho
+    @DeleteMapping(path = "{carrid:[0-9]+}/produtos/{prodid:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE )
+    public SimpleResult deleteProductCart(@PathVariable int prodid,@PathVariable int carrid){
+        logger.info("Deleting products in cart ");
+        // No verification to see if it exists
+        carrinhoRepository.deleteProductCart(prodid,carrid);
+        return new SimpleResult("Deleted products)", null);
+    }
 
 
 }

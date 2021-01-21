@@ -32,6 +32,20 @@ public interface CarrinhoRepository extends CrudRepository<Carrinho, Integer> {
     @Query(value="update carrinhos set carr_quant_prod = :#{#carr.carr_quant_prod}, carr_preco_total = :#{#carr.carr_preco_total} where carr_id = :id",nativeQuery=true )
     void updatecart(@Param("carr") Carrinho carr, @Param("id") int id);
 
+   
+
+    @Modifying
+    @Transactional
+    // Query para zerar os produtos de um carrinho. 
+    @Query(value=" DELETE FROM carrinho_produtos WHERE carrinho_produtos.carrprod_fk_carr = :id",nativeQuery=true )
+    void deleteProductsCart(@Param("id") int id);
+
+    @Modifying
+    @Transactional
+    // Query para zerar os produtos de um carrinho. 
+    @Query(value=" DELETE FROM carrinho_produtos WHERE carrinho_produtos.carrprod_fk_carr = :carrid AND carrinho_produtos.carrprod_fk_prod = :prodid",nativeQuery=true )
+    void deleteProductCart(@Param("prodid") int prodid,@Param("carrid") int carrid);
+
 
 
 

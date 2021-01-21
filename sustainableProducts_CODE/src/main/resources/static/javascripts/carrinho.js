@@ -1,5 +1,6 @@
 
 var carrinhoId;
+var produtoId;
 window.onload = async function () {
     let produtos_carr = document.getElementById("produtos");
     let cats = document.getElementById("categorias");
@@ -8,6 +9,7 @@ window.onload = async function () {
 
   
     carrinhoId= sessionStorage.getItem("carrinhoId");
+   
    
 
 
@@ -63,7 +65,10 @@ window.onload = async function () {
      
 
         for (let prods of carrinho.carrinhoprodutos){
-            html4 += `<p style="font-size: 50px;color: rgb(43, 32, 32) "> <img src="./images/logoSP.jpg" style="width: 100px;height: 100px"> ${prods.produto.nome} - Preço: €${prods.produto.preco}</p>`
+            html4 += `<p style="font-size: 50px;color: rgb(43, 32, 32) "> <img src="./images/logoSP.jpg" style="width: 100px;height: 100px"> ${prods.produto.nome} - Preço: €${prods.produto.preco}
+                        <input type="checkbox" id="${prods.produto.id}" onclick="showProduto(${prods.produto.id})">
+                        <input type="button" value="apagar" onclick="deleteProduct()">
+                      </p> `
 
         }
 
@@ -98,9 +103,30 @@ function showMarca(marc) {
 }
 
 
-/*
+
 function showProduto(idprod) {
     sessionStorage.setItem("produtoId", idprod);
-    window.location = "produto.html";
+   
 }
-*/
+
+
+
+// Função para apagar todos os produtos no carrinho
+async function  deleteProduct(){
+    produtoId= sessionStorage.getItem("produtoId");
+   
+
+    try {    
+        
+        await $.ajax({
+            url: `/api/carrinhos/${carrinhoId}/produtos/${produtoId}`,
+            method: "delete",
+            dataType: "json"
+        });
+        location.reload(); 
+   
+    }
+    catch (err) { console.log(err);
+    }
+
+}
