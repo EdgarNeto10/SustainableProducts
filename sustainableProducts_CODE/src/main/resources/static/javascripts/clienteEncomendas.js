@@ -24,16 +24,25 @@ window.onload = async function() {
             // Percorrer a lista antes para inserir os produtos em uma string; 
             htmlpro=''
 
+            var c=1
             for (let prods of enc.encomendaprodutos){
-                htmlpro += `${prods.produto.nome}`;
-            }
+                htmlpro+= `${prods.produto.nome}`
+                if(c<enc.encomendaprodutos.length){
+                htmlpro+= ', '
+                }
+               
+                else{
+                htmlpro+='.'
+                }
+                c++
 
+            }
             // A preencher a tabela coma as informações da encomenda
             htmlenc+=
 
             `<tr>
             <td>${enc.dataenvio}</td>
-            <td>Cliente: ${enc.cliente.utilizador.nome} <br> Morada de envio: ${enc.cliente.utilizador.morada} </td>
+            <td>Cliente: ${enc.cliente.utilizador.nome} <br> Morada de envio: ${enc.cliente.utilizador.morada}  <br> Produtos: ${htmlpro} <br> <p>Preço Total:${enc.precototal}</p>  </td>
             <td>${enc.estado}</td>
             <td> 
                <select  id="${enc.id}">

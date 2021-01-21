@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name ="vendedor_encomendas")
-@IdClass(VendCatId.class)
+@IdClass(VendEncId.class)
 
 public class VendedorEncomendas {
     @Id @Column(name ="vend_enc_fk_vend")
