@@ -11,7 +11,6 @@ import org.springframework.data.repository.query.Param;
 
 import pt.iade.sustainableProducts.models.Encomenda;
 import pt.iade.sustainableProducts.models.EncomendaProduto;
-import pt.iade.sustainableProducts.models.EstadoEncomenda;
 
 
 public interface EncomendaRepository extends CrudRepository<Encomenda, Integer> {
@@ -41,6 +40,14 @@ public interface EncomendaRepository extends CrudRepository<Encomenda, Integer> 
     ":#{#encprod.produto.id})",
     nativeQuery=true)
     void addProdToEnc(@Param("encprod") EncomendaProduto encprod);
+
+
+   @Modifying
+    @Transactional
+    
+    @Query(value="update encomendas set Enc_estado = :#{#encestado.estado.ordinal()} where enc_id = :id",nativeQuery=true )
+    void updateEncEstado(@Param("encestado") Encomenda encestado, @Param("id") int id);
+    
 
 
 
