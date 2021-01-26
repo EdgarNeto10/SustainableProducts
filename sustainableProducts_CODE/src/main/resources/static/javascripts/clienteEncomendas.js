@@ -34,9 +34,8 @@ window.onload = async function() {
                 htmlpro+='.'
                 }
                 c++
-            }
 
-        
+            }
             // A preencher a tabela coma as informações da encomenda
             htmlenc+=
 
