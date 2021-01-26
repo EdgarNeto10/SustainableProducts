@@ -16,8 +16,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Entity
 @Table(name ="encomenda_produtos")
 @IdClass(EncProdId.class)
-
-
 public class EncomendaProduto {
     @Id @Column(name ="encpro_fk_enc")
     

@@ -41,6 +41,9 @@ public class Encomenda {
     @ManyToOne @MapsId("cli_id") @JoinColumn(name = "Enc_cli_id")  @JsonIgnoreProperties("encomendas")  private Cliente cliente;
 
   
+    @Column(name="Enc_vend_id") private int vendid;
+                           
+    @ManyToOne @MapsId("vend_id") @JoinColumn(name = "Enc_vend_id")  @JsonIgnoreProperties("encomendas")  private Vendedor vendedor;
 
 
 
@@ -52,12 +55,13 @@ public class Encomenda {
     @OneToOne(cascade= CascadeType.ALL) @MapsId("Carr_id") @JoinColumn(name="Enc_fk_carr") private Carrinho carrinho;
    */
     
-   
+   /*
    @OneToMany @JoinColumn(name="vend_enc_fk_enc") @JsonIgnoreProperties("encomenda")
     private List<VendedorEncomendas> vend_encomendas;
+    */
 
 
-    @OneToMany @JoinColumn(name = "encpro_fk_enc")  @JsonIgnoreProperties("encomenda") 
+    @OneToMany @JoinColumn(name = "encpro_fk_enc")  @JsonIgnoreProperties("encomenda")
     private List<EncomendaProduto> encomendaprodutos;
   
  // O cascade é utilizado para não termos conflitos qunado estivermos a guardar a encomenda com o seu pagamento. Nã sei 
@@ -82,7 +86,6 @@ public class Encomenda {
     }
     
 
-  
 
     public double getPrecoporte() {
         return precoporte;
@@ -102,21 +105,16 @@ public class Encomenda {
 
   
 
-  
-
     public Cliente getCliente() {
         return cliente;
     }
 
    
 
-    public List<VendedorEncomendas> getVend_encomendas() {
-        return vend_encomendas;
-    }
-
     public List<EncomendaProduto> getEncomendaprodutos() {
         return encomendaprodutos;
     }
+
 
     public EstadoEncomenda getEstado() {
         return estado;
@@ -127,22 +125,19 @@ public class Encomenda {
     }
 
   
+    public Vendedor getVendedor() {
+        return vendedor;
+    }
+
+    public int getVendid() {
+        return vendid;
+    }
+
+    
 
    
-
+   
   
-
-
-   
-
-    
-
-    
-
-    
-
-   
-
 
  
 }

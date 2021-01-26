@@ -2,6 +2,9 @@ var carrinhoId;
 var carrinho;
 var cliente;
 var tot;
+var res=""
+var results; 
+
 
 window.onload = async function () {
     var client_data = document.getElementById("cliente");
@@ -11,6 +14,10 @@ window.onload = async function () {
     var produtos_carr = document.getElementById("produtos");
     tot = document.getElementById("total");
     let msgerror = document.getElementById("error")
+    results = document.getElementById("result");
+
+    
+    
 
     
 
@@ -143,7 +150,8 @@ async function encomendar() {
         estado: "Nova",
         precoporte: parseFloat(porte),
         precototal: parseFloat(parseFloat(porte) + carrinho.carr_preco_total),
-        cliid: parseInt(14)
+        cliid: parseInt(cliente.cli_id),
+        vendid: parseInt(2) // As encomendas vão para o unico vendedor presente na plataforma
 
     };
  
@@ -158,9 +166,11 @@ async function encomendar() {
             dataType: "json",
             contentType: "application/json"
         });
-   
-        document.getElementById("result").innerHTML = "Encomenda efectuada com sucesso";
+       
         saveEncomenda(); 
+        res += "Encomenda efectuada com sucesso -> ";
+        results.innerHTML = res
+       
    
    
     } catch (err) { console.log(err); }
@@ -186,7 +196,7 @@ async function saveEncomenda() {
             }
 
         }
-        
+     
         // A pegar os produtos no carrinho do cliente.
         let carrinho = await $.ajax({
             url: "/api/carrinhos/"+carrinhoId,
@@ -196,7 +206,7 @@ async function saveEncomenda() {
 
       // A percorrer a lista de produtos no carrinho, para inserir cada produto na encomenda.
         for (let carr of carrinho.carrinhoprodutos){
-
+     
             var datacarr = {
                 produto: { id: parseInt(carr.produto.id)},
                 encomenda:  {id: parseInt(id)}
@@ -211,14 +221,17 @@ async function saveEncomenda() {
             dataType: "json",
             contentType: "application/json"
         });
-        document.getElementById("result2").innerHTML = "Produtos da encomenda salvos com sucesso";
-       
         
-        deleteAllProducts();
+
+    }
+       deleteAllProducts();
+       res += "Produtos da encomenda salvos com sucesso -> ";
+       results.innerHTML = res
+       
     
    
    
-    } 
+ 
 }
     catch (err) { console.log(err);}
 
@@ -238,10 +251,14 @@ async function  deleteAllProducts(){
             method: "delete",
             dataType: "json"
         }); 
+
+        res += "Carrinho zerado com sucesso";
+        results.innerHTML = res
    
     }
-    catch (err) { console.log(err);
-    }
+    catch (err) { console.log(err);}
+
+   
 
 }
 

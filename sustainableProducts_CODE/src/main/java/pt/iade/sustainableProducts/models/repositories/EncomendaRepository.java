@@ -19,13 +19,14 @@ public interface EncomendaRepository extends CrudRepository<Encomenda, Integer> 
     @Modifying
     @Transactional
     @Query(value="Insert into encomendas "+
-    "(Enc_data_Envio, Enc_local_Entrega, Enc_estado, Enc_preco_Porte, Enc_preco_Total, Enc_cli_id) "+
+    "(Enc_data_Envio, Enc_local_Entrega, Enc_estado, Enc_preco_Porte, Enc_preco_Total, Enc_cli_id, Enc_vend_id) "+
     "values(:#{#enc.dataenvio}, "+
     ":#{#enc.localentrega}, "+
     ":#{#enc.estado.ordinal()}, "+
     ":#{#enc.precoporte}, "+
     ":#{#enc.precototal}, "+
-    ":#{#enc.cliid})",
+    ":#{#enc.cliid}, "+
+    ":#{#enc.vendid})",
     nativeQuery=true)
     void addProdsToOrder(@Param("enc") Encomenda enc);
 

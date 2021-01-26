@@ -30,8 +30,14 @@ public class Vendedor {
                                 
     @ManyToOne @MapsId("uti_id") @JoinColumn(name = "vend_fk_uti")  private Utilizador utilizador;
     
+    /*
     @OneToMany @JoinColumn(name="vend_enc_fk_vend") @JsonIgnoreProperties("vendedor")
     private List<VendedorEncomendas> vend_encomendas;
+    */
+    @OneToMany @JoinColumn(name = "prod_fk_vend")  @JsonIgnoreProperties("vendedor") private List<Produto> produtos;
+
+
+    @OneToMany @JoinColumn(name = "Enc_vend_id")  @JsonIgnoreProperties("vendedor") private List<Encomenda> encomendas;
 
     
      public Vendedor(){}
@@ -54,10 +60,26 @@ public class Vendedor {
          return utilizador;
      }
 
+     /*
      public List<VendedorEncomendas> getVend_encomendas() {
          return vend_encomendas;
      }
+     */
 
+     public List<Encomenda> getEncomendas() {
+         return encomendas;
+     }
+
+     /*
+
+     public List<Produto> getProdutos() {
+         return produtos;
+     }
+
+     */
+
+
+     
 
 }
 

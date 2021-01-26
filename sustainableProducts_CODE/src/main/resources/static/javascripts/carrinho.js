@@ -111,7 +111,7 @@ function showProduto(idprod) {
 
 
 
-// Função para apagar todos os produtos no carrinho
+// Função para apagar cada produto no carrinho
 async function  deleteProduct(){
     produtoId= sessionStorage.getItem("produtoId");
    

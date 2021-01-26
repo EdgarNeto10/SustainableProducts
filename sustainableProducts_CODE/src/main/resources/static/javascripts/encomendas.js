@@ -44,7 +44,7 @@ window.onload = async function () {
             html2 += ` <a href="categoria.html" onclick='showCategoria(${cat.cat_id})' )> ${cat.cat_nome} </a>`
         cats.innerHTML = html2;
 
-        //A chamar as encomendas 
+        //A chamar o cliente
         let cliente = await $.ajax({
             url: "/api/clientes/14",
             method: "get",
@@ -88,9 +88,6 @@ window.onload = async function () {
             }
        
         encomenda.innerHTML=htmlenc;
-       
-       
-
        
     } 
       
