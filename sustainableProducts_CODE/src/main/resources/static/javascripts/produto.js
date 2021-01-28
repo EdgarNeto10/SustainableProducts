@@ -98,19 +98,13 @@ async function add() {
     };
     try {
         let resultt = await $.ajax({
-            url: `/api/carrinhos/${produtoId}/produtos`,
+            url: `/api/carrinhos/${carrinhoId}/produtos`,
             method: "post",
             data: JSON.stringify(data),
             dataType: "json", 
             contentType: "application/json"
         });
         document.getElementById("result").innerHTML = "Produdo adicionado ao carrinho com sucesso";
-
-        
-    
-        updatecarr();
-          
-    
     
     } 
     catch (err) { console.log(err); }
@@ -120,6 +114,9 @@ async function add() {
    
 }
 
+/*
+
+//update está a ser calculado no back-end
 
 async function updatecarr() {
   
@@ -162,4 +159,4 @@ async function updatecarr() {
 catch (err) { console.log(err); }
 
 }
-
+*/

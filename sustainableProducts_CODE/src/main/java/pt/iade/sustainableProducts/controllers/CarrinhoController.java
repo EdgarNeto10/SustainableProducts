@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 import pt.iade.sustainableProducts.controllers.results.SimpleResult;
 import pt.iade.sustainableProducts.models.Carrinho;
 import pt.iade.sustainableProducts.models.CarrinhoProduto;
-import pt.iade.sustainableProducts.models.repositories.CarrinhoProdutoRepository;
 import pt.iade.sustainableProducts.models.repositories.CarrinhoRepository;
 
 @RestController
@@ -30,7 +29,7 @@ public class CarrinhoController {
     @Autowired
     private CarrinhoRepository carrinhoRepository;
 
-    private CarrinhoProdutoRepository carrinhoprodutoRepository;
+    
 
     @GetMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
 
@@ -49,17 +48,17 @@ public class CarrinhoController {
 
   
 
-
+/*
 
     @PutMapping(path = "/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
     public  SimpleResult updateCarrinho(@RequestBody Carrinho carr, @PathVariable int id) {
           
-          /*
+          
           carrinho.setCarr_id(id);
 
           carrinhoRepository.save(carrinho);
           return new SimpleResult("Added carr with id ", carrinho);
-        */
+        
          
         logger.info("updating carrinho with id " + id);
         carrinhoRepository.updatecart(carr, id);
@@ -67,8 +66,10 @@ public class CarrinhoController {
 
     
     }
-
-    @PostMapping(path = "/{produtoId}/produtos", produces = MediaType.APPLICATION_JSON_VALUE)
+*/
+    
+    //Add um produto ao carrinho.
+    @PostMapping(path = "/{carrinhoId}/produtos", produces = MediaType.APPLICATION_JSON_VALUE)
     public SimpleResult saveProductInCart(@RequestBody CarrinhoProduto carrprod) {
         logger.info("Adding prod with id " + carrprod.getProduto().getId());
         carrinhoRepository.addProdToCart(carrprod);
@@ -88,6 +89,7 @@ public class CarrinhoController {
 
     //Apagar um produto de um carrinho
     @DeleteMapping(path = "{carrid:[0-9]+}/produtos/{prodid:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE )
+    
     public SimpleResult deleteProductCart(@PathVariable int prodid,@PathVariable int carrid){
         logger.info("Deleting products in cart ");
         // No verification to see if it exists

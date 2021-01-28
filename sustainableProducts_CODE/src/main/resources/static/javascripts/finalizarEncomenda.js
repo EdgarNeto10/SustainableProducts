@@ -16,12 +16,6 @@ window.onload = async function () {
     let msgerror = document.getElementById("error")
     results = document.getElementById("result");
 
-    
-    
-
-    
-
-
 
     carrinhoId = sessionStorage.getItem("carrinhoId");
 
@@ -93,7 +87,7 @@ window.onload = async function () {
     
 
 
-        tot.innerHTML =  `<p style="float: right;">Total: € ${carrinho.carr_preco_total} - ${carrinho.carr_quant_prod} Produtos </p>`
+        tot.innerHTML =  `<p style="float: right;">Total: € ${carrinho.somaTotal} - ${carrinho.quantidadeProds} Produtos </p>`
         produtos_carr.innerHTML = html5;
          
     
@@ -155,8 +149,6 @@ async function encomendar() {
 
     };
  
-   
-
     try {
         
         let result = await $.ajax({
@@ -170,8 +162,6 @@ async function encomendar() {
         saveEncomenda(); 
         res += "Encomenda efectuada com sucesso -> ";
         results.innerHTML = res
-       
-   
    
     } catch (err) { console.log(err); }
 }

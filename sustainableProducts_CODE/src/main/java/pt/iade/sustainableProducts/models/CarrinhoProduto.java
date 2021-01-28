@@ -11,16 +11,18 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 @Table(name ="carrinho_produtos")
 @IdClass(CarrProdId.class)
 
+
+
 public class CarrinhoProduto {
     @Id @Column(name ="carrprod_fk_carr")
     
     @JsonIgnore private int carr_id;
-    
     @ManyToOne @MapsId("carr_id") @JoinColumn(name="carrprod_fk_carr")
     @JsonIgnoreProperties("carrinhoprodutos") 
     private Carrinho carrinho;
@@ -28,7 +30,6 @@ public class CarrinhoProduto {
     @Id @Column(name ="carrprod_fk_prod")
     
     @JsonIgnore private int prod_id;
-    
     @ManyToOne @MapsId("prod_id") @JoinColumn(name="carrprod_fk_prod")
     @JsonIgnoreProperties("carrinhoprodutos")
     private Produto produto;

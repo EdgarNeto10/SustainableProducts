@@ -1,5 +1,6 @@
 package pt.iade.sustainableProducts.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -32,7 +33,7 @@ public class Produto {
 
     @OneToMany @JoinColumn(name="catprod_fk_prod")
     @JsonIgnoreProperties("produto")
-    private List<CategoriaProduto> categoriaprodutos;
+    private List<CategoriaProduto> categoriaprodutos= new ArrayList<>();
 
     @JsonIgnore private int  prod_fk_stock;
     @ManyToOne @MapsId("stock_id") @JoinColumn(name = "prod_fk_stock")  private Stock stock;
@@ -41,10 +42,10 @@ public class Produto {
     @ManyToOne @MapsId("vend_id") @JoinColumn(name = "prod_fk_vend")  private Vendedor vendedor;
 
     @OneToMany @JoinColumn(name = "carrprod_fk_prod")  @JsonIgnoreProperties("produto")
-    private List<CarrinhoProduto> carrinhoprodutos;
+    private List<CarrinhoProduto> carrinhoprodutos= new ArrayList<>();
 
      @OneToMany @JoinColumn(name = "encpro_fk_prod")  @JsonIgnoreProperties("produto") 
-     private List<EncomendaProduto> encomendaprodutos;
+     private List<EncomendaProduto> encomendaprodutos = new ArrayList<>();
 
     
 
@@ -112,6 +113,7 @@ public class Produto {
         return encomendaprodutos;
     }
 */
+
 
 
  

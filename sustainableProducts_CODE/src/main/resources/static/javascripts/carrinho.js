@@ -72,7 +72,7 @@ window.onload = async function () {
 
         }
 
-        tot.innerHTML =  `<p style="float: right;">Total: € ${carrinho.carr_preco_total} - ${carrinho.carr_quant_prod} Produtos </p>`
+        tot.innerHTML =  `<p style="float: right;">Total: € ${carrinho.somaTotal} - ${carrinho.quantidadeProds} Produtos </p>`
         produtos_carr.innerHTML = html4;
 
 

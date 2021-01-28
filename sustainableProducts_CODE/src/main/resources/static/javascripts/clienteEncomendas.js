@@ -80,7 +80,7 @@ window.onload = async function() {
 
 
 
-
+// Update estado de uma deteminada encomenda
 async function alterar(id) {
     let estado= document.getElementById(id).value
 
