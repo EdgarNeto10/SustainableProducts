@@ -30,6 +30,7 @@ public class CarrinhoProduto {
     @Id @Column(name ="carrprod_fk_prod")
     
     @JsonIgnore private int prod_id;
+    
     @ManyToOne @MapsId("prod_id") @JoinColumn(name="carrprod_fk_prod")
     @JsonIgnoreProperties("carrinhoprodutos")
     private Produto produto;

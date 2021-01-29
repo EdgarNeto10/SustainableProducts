@@ -143,7 +143,7 @@ async function encomendar() {
         localentrega: cliente.utilizador.morada,
         estado: "Nova",
         precoporte: parseFloat(porte),
-        precototal: parseFloat(parseFloat(porte) + carrinho.carr_preco_total),
+        precototal: parseFloat(parseFloat(porte) + carrinho.somaTotal),
         cliid: parseInt(cliente.cli_id),
         vendid: parseInt(2) // As encomendas vão para o unico vendedor presente na plataforma
 
