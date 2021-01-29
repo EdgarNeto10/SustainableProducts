@@ -2,8 +2,8 @@ var carrinhoId;
 var carrinho;
 var cliente;
 var tot;
-var res=""
-var results; 
+var res = ""
+var results;
 
 
 window.onload = async function () {
@@ -59,7 +59,7 @@ window.onload = async function () {
 
 
         // A chamar os dados do cliente
-         cliente = await $.ajax({
+        cliente = await $.ajax({
             url: "/api/clientes/14",
             method: "get",
             dataType: "json"
@@ -76,21 +76,21 @@ window.onload = async function () {
             dataType: "json"
         });
         html5 = "";
-     
+
 
 
         for (let prods of carrinho.carrinhoprodutos) {
             html5 += `<p style="font-size: 50px;color: rgb(43, 32, 32) "> <img src="./images/logoSP.jpg" style="width: 100px;height: 100px"> ${prods.produto.nome} - Preço: €${prods.produto.preco}</p>`
 
         }
-       
-    
 
 
-        tot.innerHTML =  `<p style="float: right;">Total: € ${carrinho.somaTotal} - ${carrinho.quantidadeProds} Produtos </p>`
+
+
+        tot.innerHTML = `<p style="float: right;">Total: € ${carrinho.somaTotal} - ${carrinho.quantidadeProds} Produtos </p>`
         produtos_carr.innerHTML = html5;
-         
-    
+
+
     }
     catch (err) {
         console.log(err);
@@ -123,7 +123,7 @@ function showMarca(marc) {
 //Função para enviar os dados relacionados a encomenda
 async function encomendar() {
     let porte = document.getElementById("porte").value
- 
+
     now = new Date;
 
     function dataAtualFormatada() {
@@ -138,7 +138,7 @@ async function encomendar() {
 
 
     let data = {
-       
+
         dataenvio: dataAtualFormatada(),
         localentrega: cliente.utilizador.morada,
         estado: "Nova",
@@ -148,9 +148,9 @@ async function encomendar() {
         vendid: parseInt(2) // As encomendas vão para o unico vendedor presente na plataforma
 
     };
- 
+
     try {
-        
+
         let result = await $.ajax({
             url: `/api/clientes/encomendas`,
             method: "post",
@@ -158,72 +158,88 @@ async function encomendar() {
             dataType: "json",
             contentType: "application/json"
         });
-       
-        saveEncomenda(); 
+
+        saveEncomenda();
         res += "Encomenda efectuada com sucesso -> ";
         results.innerHTML = res
-   
+
     } catch (err) { console.log(err); }
 }
 
 
 //Função para salvar os produtos do carrinho na encomenda. 
 async function saveEncomenda() {
- 
+
 
     try {
         let encomendas = await $.ajax({
             url: "/api/clientes/encomendas",
             method: "get",
-            dataType: "json"    
+            dataType: "json"
         });
-         
+
         // A pegar o id da ultima encomenda, calculando o maior id na lista.
-        for (let enc of encomendas){
-            var id=0
-            if(enc.id>id){
-                id=enc.id
+        for (let enc of encomendas) {
+            var id = 0
+            if (enc.id > id) {
+                id = enc.id
             }
 
         }
-     
+
         // A pegar os produtos no carrinho do cliente.
         let carrinho = await $.ajax({
-            url: "/api/carrinhos/"+carrinhoId,
-            method: "get",        
-            dataType: "json"    
+            url: "/api/carrinhos/" + carrinhoId,
+            method: "get",
+            dataType: "json"
         });
 
-      // A percorrer a lista de produtos no carrinho, para inserir cada produto na encomenda.
-        for (let carr of carrinho.carrinhoprodutos){
-     
+        // A percorrer a lista de produtos no carrinho, para inserir cada produto na encomenda.
+        for (let carr of carrinho.carrinhoprodutos) {
+
             var datacarr = {
-                produto: { id: parseInt(carr.produto.id)},
-                encomenda:  {id: parseInt(id)}
-            };    
+                produto: { id: parseInt(carr.produto.id) },
+                encomenda: { id: parseInt(id) }
+            };
 
 
 
-        let result = await $.ajax({
-            url: `/api/clientes/encomendas/produtos`,
-            method:"post",
-            data: JSON.stringify(datacarr),
-            dataType: "json",
-            contentType: "application/json"
-        });
-        
+            let result = await $.ajax({
+                url: `/api/clientes/encomendas/produtos`,
+                method: "post",
+                data: JSON.stringify(datacarr),
+                dataType: "json",
+                contentType: "application/json"
+            });
+
+
+            // Update o stock de cada produto da encomenda realizada
+            let updateQtd = carr.produto.stock.quantidade - 1;
+            let dataStock = {
+                quantidade: updateQtd 
+
+            }
+
+            await $.ajax({
+                url: `/api/categorias/produtos/${carr.produto.id}/stocks/${carr.produto.stock.id}`,
+                method: "put",
+                data: JSON.stringify(dataStock),
+                dataType: "json",
+                contentType: "application/json"
+            });
+
+
+        }
+        deleteAllProducts();
+        res += "Produtos da encomenda salvos com sucesso -> ";
+        results.innerHTML = res
+
+
+
+
 
     }
-       deleteAllProducts();
-       res += "Produtos da encomenda salvos com sucesso -> ";
-       results.innerHTML = res
-       
-    
-   
-   
- 
-}
-    catch (err) { console.log(err);}
+    catch (err) { console.log(err); }
 
 
 
@@ -232,24 +248,26 @@ async function saveEncomenda() {
 
 
 // Função para apagar todos os produtos no carrinho
-async function  deleteAllProducts(){
+async function deleteAllProducts() {
 
-    try {    
-        
+    try {
+
         await $.ajax({
-            url: "/api/carrinhos/produtos/"+carrinhoId,
+            url: "/api/carrinhos/produtos/" + carrinhoId,
             method: "delete",
             dataType: "json"
-        }); 
+        });
 
         res += "Carrinho zerado com sucesso";
         results.innerHTML = res
-   
-    }
-    catch (err) { console.log(err);}
 
-   
+    }
+    catch (err) { console.log(err); }
+
+
 
 }
+
+
 
 

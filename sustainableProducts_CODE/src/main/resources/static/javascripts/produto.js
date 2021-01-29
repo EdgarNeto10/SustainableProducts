@@ -1,5 +1,6 @@
 var produtoId;
 var carrinhoId;
+var produto;
 window.onload = async function () {
     let prods = document.getElementById("produtos");
     let cats = document.getElementById("categorias");
@@ -16,7 +17,7 @@ window.onload = async function () {
     try {
         
         //A Chamar os produtos na galeria
-        let produto = await $.ajax({
+        produto = await $.ajax({
             url: "/api/categorias/produtos/"+produtoId,
             method: "get",
             dataType: "json"
@@ -44,7 +45,7 @@ window.onload = async function () {
 
         }
         */
-        html += ` <figure class="gallery-frame" onclick='showProduto (id=${produto.id})' ><img class="gallery-img" src="../images/logoSP.jpg"><figcaption>${produto.nome} - preço: €${produto.preco}</figcaption></figure>`
+        html = ` <figure class="gallery-frame" onclick='showProduto (id=${produto.id})' ><img class="gallery-img" src="../images/logoSP.jpg"><figcaption>${produto.nome} - preço: €${produto.preco}</figcaption></figure>`
         marcs.innerHTML = html3;
         prods.innerHTML = html;
             
@@ -91,27 +92,30 @@ function showProduto(idprod) {
 
 //Post: Adding a product to cart
 async function add() {
-    let carrid= carrinhoId
-    let data = {
-        produto: { id: parseInt(produtoId) },
-        carrinho:  {carr_id: parseInt(carrid)}
-    };
-    try {
-        let resultt = await $.ajax({
-            url: `/api/carrinhos/${carrinhoId}/produtos`,
-            method: "post",
-            data: JSON.stringify(data),
-            dataType: "json", 
-            contentType: "application/json"
-        });
-        document.getElementById("result").innerHTML = "Produdo adicionado ao carrinho com sucesso";
-    
-    } 
-    catch (err) { console.log(err); }
+    // A verificar primeiro se o produto está disponivel em stock
+    if(produto.stock.disponivel){
+        let carrid= carrinhoId
+        let data = {
+            produto: { id: parseInt(produtoId) },
+            carrinho:  {carr_id: parseInt(carrid)}
+        };
+        try {
+            let resultt = await $.ajax({
+                url: `/api/carrinhos/${carrinhoId}/produtos`,
+                method: "post",
+                data: JSON.stringify(data),
+                dataType: "json", 
+                contentType: "application/json"
+            });
+            document.getElementById("result").innerHTML = "Produdo adicionado ao carrinho com sucesso";
+        
+        } 
 
+        catch (err) { console.log(err); }
+    }
+    else 
+        document.getElementById("result").innerHTML = "Produdo não disponível em Stock ";
 
-    
-   
 }
 
 /*

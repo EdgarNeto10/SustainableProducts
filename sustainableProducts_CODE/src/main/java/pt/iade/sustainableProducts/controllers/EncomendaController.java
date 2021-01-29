@@ -62,17 +62,15 @@ public class EncomendaController {
     }
 
     @PostMapping(path = "/produtos", produces = MediaType.APPLICATION_JSON_VALUE)
-    public SimpleResult saveProductInCart(@RequestBody EncomendaProduto encprod) {
+    public SimpleResult saveProductToEnc(@RequestBody EncomendaProduto encprod) {
         logger.info("Adding prod with id " + encprod.getProduto().getId());
         encomendaRepository.addProdToEnc(encprod);
-        return new SimpleResult("Added prod with id " ,encprod);
+        return new SimpleResult("Added prod with id ", encprod);
 
     }
 
     @PutMapping(path = "/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public  SimpleResult updateCarrinho(@RequestBody Encomenda encestado, @PathVariable int id) {
-          
-         
+    public  SimpleResult updateOrder(@RequestBody Encomenda encestado, @PathVariable int id) { 
         logger.info("updating encomenda with id " + id);
         encomendaRepository.updateEncEstado(encestado, id);
         return new SimpleResult("Added enc with id ", encestado);

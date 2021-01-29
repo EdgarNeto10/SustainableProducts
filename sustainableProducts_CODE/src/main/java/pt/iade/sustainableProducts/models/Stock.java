@@ -33,6 +33,17 @@ public class Stock {
     }
 
   
+// Verificar se o produto está disponivel em Stock
+    public Boolean getDisponivel(){
+        if(quantidade==0)
+            return false;
+
+        return true;
+    
+
+    }
+
+
     
 
 
