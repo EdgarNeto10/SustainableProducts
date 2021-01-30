@@ -10,7 +10,7 @@
     <!-- Biblioteca -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    <script src="javascripts/finalizarEncomenda.js?$$REVISION$$"></script>
+    <script src="javascripts/produtos.js?$$REVISION$$"></script>
 
     <!--carrinho-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -42,44 +42,16 @@
     
                 </div>
             </li>
+            <li><a href="encomendas.html">Encomendas</a></li>
             <li style="cursor: pointer;float:right" onclick="location.href = 'carrinho.html'" id="carr"><i  class="fa fa-shopping-cart" style="font-size:48px;color:rgb(211, 255, 185)"></i> </li>
             <li style="float:right" id="sobre"><a href="#about">Sobre</a></li>
         </ul>
     </nav>
 
     <main>
-        <h1>Finalizar Encomenda</h1>
-        <h2>Dados do cliente</h2>
-        <section id="cliente">
 
-        </section>
+        <div class="gallery-grid" id="produtos"> </div>
 
-        <h2>Métodos de Envio</h2>
-        <section id="envio">
-            <p>
-            <input type="radio" id="porte" name="metodo" value="2.95" >
-            <label>2,95 € Envio Standard - 2 a 5 dias úteis</label><br>
-            <input type="radio" id="porte" name="metodo" value="3.95" >
-            <label> 3,95 € Envio Expresso - 1 a 2 dias úteis (pagamento até às 15h) </label><br>
-           </p>
-        </section>
-
-        <h2>Produtos da Encomenda</h2>
-        <section id="produtos">
-
-        </section>
-
-        <section id="total">
-
-        </section>
-
-        <section id="error">
-
-        </section>
-        <input type="button" value="encomendar" onclick="encomendar()">
-
-
-        
 
  <!--
          Template para galeria de produtos
@@ -88,9 +60,8 @@
         <figcaption>IImage Title - preço: 120€</figcaption>
        </figure>
  -->
-    <p id="result" style="color :green;"></p>
+
     </main>
-   
 
     <footer>
         <p>Copyright © SustainableProducts 2021</p>
