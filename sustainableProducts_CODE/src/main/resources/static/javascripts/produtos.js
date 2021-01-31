@@ -2,6 +2,7 @@ window.onload = async function () {
     let prods = document.getElementById("produtos");
     let cats = document.getElementById("categorias");
     let marcs = document.getElementById("marcas");
+    var clienteID = sessionStorage.getItem("clienteId");
     try {
         
         //A Chamar os produtos na galeria
@@ -47,7 +48,7 @@ window.onload = async function () {
 
         // Chamar um determinado cliente e pôr na sessionStorage
         let cliente = await $.ajax({
-            url: "/api/clientes/14",
+            url: "/api/clientes/"+clienteID ,
             method: "get",
             dataType: "json"
         });

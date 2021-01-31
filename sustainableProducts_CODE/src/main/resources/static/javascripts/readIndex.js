@@ -15,8 +15,6 @@ window.onload =  function () {
   
 //  Functions
 
-// Esta função pega os dados de todos atletas e insere os seus nomes em um select.  
-
   async function readClienteindex() {
 
 
@@ -45,7 +43,7 @@ window.onload =  function () {
 }
 
 
-// Esta função pega os dados de todos membros da staff e insere os seus nomes em um select.  
+
 
 async function readVendedorindex() {
 
@@ -59,7 +57,7 @@ async function readVendedorindex() {
             dataType: "json"
         });
         var option = "";
-        option += "<option value='" + vendedor.vend_id + "'>"
+        option += "<option value='" + vendedor.id + "'>"
                 + vendedor.utilizador.nome + "</option>"
         
         selecionar_V.innerHTML = option;
@@ -78,43 +76,11 @@ async function readVendedorindex() {
 
 
 
-
-//Esta função pega o nome de um determinado atleta e mostra na pagina.
-/*
-function readAtletasNomes() {
-  $.ajax({
-      url: '/api/atletas/'+sessionStorage.getItem('atletaId'),
-      method: 'get',
-      contentType: "application/json", // sending in json
-      dataType: "json",// receiving in json
-      success: function (res, status) {
-          var html = "";
-
-          nomes = res
-          for (i in nomes) {
-              html += '<li>' + nomes[i].atleta_nome + '</li>'
-
-          }
-
-          nome.innerHTML = html;
-      },
-      error: function () {
-
-      }
-  })
-
-}*/
-
-
-//--------------Session Storage------------//
-
-
-// Esta função guarda o id do atleta no session storage das paginas.
 function setIdCliente(){
   window.sessionStorage.setItem('clienteId', selecionar_C.value)
 }
 
-// Esta função guarda o id da staff no session storage das paginas.
+
 function setIdVendedor(){
   window.sessionStorage.setItem('vendedorId', selecionar_V.value)
 }

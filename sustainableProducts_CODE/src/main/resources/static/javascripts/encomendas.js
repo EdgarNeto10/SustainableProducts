@@ -3,6 +3,7 @@ window.onload = async function () {
     let cats = document.getElementById("categorias");
     let marcs = document.getElementById("marcas");
     let encomenda = document.getElementById("encomendas");
+    var clienteID = sessionStorage.getItem("clienteId");
     try {
         
         //A Chamar os produtos na galeria
@@ -46,7 +47,7 @@ window.onload = async function () {
 
         //A chamar o cliente
         let cliente = await $.ajax({
-            url: "/api/clientes/14",
+            url: "/api/clientes/"+clienteID ,
             method: "get",
             dataType: "json"
         });

@@ -11,6 +11,7 @@ body{
     font-size: 30px;
     color:rgb(253, 253, 253);
     background-color:rgb(143, 132, 112);
+    background-image: url("../images/fundoLoginV.jpg");
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
     
   }
@@ -25,7 +26,7 @@ body{
   
   footer {
     grid-area:footer;
-     background-color: rgba(113, 228, 228, 0.555);
+    background-color: rgba(10, 23, 55, 0.39);
     margin:100px 0px 0px 0px;
     text-align: center;
   
@@ -34,7 +35,7 @@ body{
   a:link, a:visited{
     color: rgb(51, 0, 0);
     padding: 10px;
-    background-color:red;
+    background-color:rgb(196, 196, 196);
     text-decoration: none;
     font-size: 18px;
     
@@ -48,12 +49,14 @@ body{
   
   body>header {
     background-color: rgb(10,23,55,0.5);
-    color:rgb(173, 80, 80);
-    font-size:30px;
+    color:rgb(255, 255, 255);
+    font-size:25px;
     background-position: right;
     background-size: auto;
     background-repeat: no-repeat;
     background-size: 300px 160px;
+    text-align: center;
+    
    
   }
   
@@ -61,15 +64,14 @@ body{
   label{
     display: block;
     margin-top:100px;
-    color:rgb(117, 237, 253);
+    color:rgb(255, 255, 255);
   }
   
   
   
         /*Flex Box/*
   /* Classe mãe*/
-  
-  /*@media(min-width:778px){*/
+
   .utilizadores{
     /*margin:250px; Margem das colunas ao browser */
     display: flex;
@@ -89,7 +91,8 @@ body{
     flex: 1;
     border-width:3px; /* Define expessura  da borda */
     border-style:solid;  /* Define estilo da da borda */
-    border-color: black;
+    border-color: rgb(241, 237, 237);
+    background-color:rgba(255, 255, 255, 0.164);
     height: 250px;/*altura das imgens*/
     margin:10px; /*Margem entre as colunas */
     order:3;
@@ -99,18 +102,25 @@ body{
   
   
   
-  
-  
   .vendedor{
     flex: 1;
     border-width:3px; /* Define expessura  da borda */
     border-style:solid;  /* Define estilo da da borda */
-    border-color: black;
-    background-color:purple;
+    border-color: rgb(255, 255, 255);
+    background-color:rgba(255, 255, 255, 0.164);
     margin:10px;
     order:2;
    
   
     }
+
+    #logo{
+      border-radius: 50%;
+      height:100px ;
+      margin-left: 20px;
+      margin-top: 10px;
+   
+    
+  }
   
    

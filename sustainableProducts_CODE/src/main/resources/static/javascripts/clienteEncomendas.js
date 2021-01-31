@@ -1,9 +1,10 @@
 window.onload = async function() {
     let clienteEncomenda = document.getElementById("clienteEncomendas");
+    var vendedorID = sessionStorage.getItem("vendedorId");
     try {
         //A chamar o vendedor
         let vendedor = await $.ajax({
-            url: "/api/vendedores/2",
+            url: "/api/vendedores/"+vendedorID ,
             method: "get",
             dataType: "json"
         });

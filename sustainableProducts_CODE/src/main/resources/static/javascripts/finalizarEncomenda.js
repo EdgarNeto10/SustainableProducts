@@ -14,6 +14,7 @@ window.onload = async function () {
     tot = document.getElementById("total");
     let msgerror = document.getElementById("error")
     results = document.getElementById("result");
+    var clienteID = sessionStorage.getItem("clienteId");
 
 
     carrinhoId = sessionStorage.getItem("carrinhoId");
@@ -59,7 +60,7 @@ window.onload = async function () {
 
         // A chamar os dados do cliente
         cliente = await $.ajax({
-            url: "/api/clientes/14",
+            url: "/api/clientes/"+clienteID,
             method: "get",
             dataType: "json"
         });
@@ -211,7 +212,7 @@ async function saveEncomenda() {
 
             }
             let prodID = carr.produto.id
-            let stockID = arr.produto.stock.id
+            let stockID = carr.produto.stock.id
 
             await $.ajax({
                 url: `/api/categorias/produtos/${prodID}/stocks/${stockID}`,
