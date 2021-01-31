@@ -16,7 +16,7 @@ window.onload = async function () {
         let html = "";
         let html3 = "";
         for (let prod of categoria.categoriaprodutos){   
-            html += ` <figure class="gallery-frame" id=${prod.produto.id} ><img class="gallery-img" src="../images/${prod.produto.nome}.jpg" width="600" height="400"><figcaption>${prod.produto.nome} - preço: €${prod.produto.preco}</figcaption></figure>`
+            html += ` <figure class="gallery-frame" id=${prod.produto.id} onclick='showProduto (id=${prod.produto.id})' ><img class="gallery-img" src="../images/${prod.produto.nome}.jpg" width="600" height="400"><figcaption>${prod.produto.nome} - preço: €${prod.produto.preco}</figcaption></figure>`
             //A chamar as marcas por categoria
             html3 += ` <a href="marca.html"   onclick='showMarca("${prod.produto.marca}")> ${prod.produto.marca} </a>`
 
@@ -54,4 +54,9 @@ function showCategoria(idcat) {
 function showMarca(marc) {
     sessionStorage.setItem("marca", marc);
     
+}
+
+function showProduto(idprod) {
+    sessionStorage.setItem("produtoId", idprod);
+    window.location = "produto.html";
 }
