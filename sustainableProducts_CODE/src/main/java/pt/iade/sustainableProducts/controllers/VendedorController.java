@@ -24,14 +24,14 @@ public class VendedorController {
     @Autowired
     private VendedorRepository vendedorRepository;
 
+    //A pegar todos os vendedores presentes na plataforma
     @GetMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
-
-    public Iterable<Vendedor> getClientes() {
+    public Iterable<Vendedor> getVendedores() {
         logger.info("Sending all vendedores");
         return vendedorRepository.findAll();
     }
 
-
+    // A pegar um determindado vendedor 
     @GetMapping(path = "/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Vendedor getVendedor(@PathVariable int id) {
          logger.info("Sending vendedor with id "+id);
@@ -40,3 +40,4 @@ public class VendedorController {
     }
 
 }
+

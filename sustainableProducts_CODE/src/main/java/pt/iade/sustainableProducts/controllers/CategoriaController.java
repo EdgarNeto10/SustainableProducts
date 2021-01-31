@@ -26,11 +26,14 @@ public class CategoriaController {
 
     @GetMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
 
+
+    // A pegar todas as categorias
     public Iterable<Categoria> getCategorias() {
         logger.info("Sending all categories");
         return categoriaRepository.findAll();
     }
 
+    // A pegar uma determinada categoria
     @GetMapping(path = "/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Categoria getCategoria(@PathVariable int id) {
          logger.info("Sending category with id "+id);
@@ -39,3 +42,4 @@ public class CategoriaController {
     }
 
 }
+

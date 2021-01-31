@@ -2,6 +2,8 @@ package pt.iade.sustainableProducts.controllers;
 
 import java.util.Optional;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,14 +32,16 @@ public class CarrinhoController {
     private CarrinhoRepository carrinhoRepository;
 
     
-
+  //A pegar todos os carrinhos dos presentes na plataforma
     @GetMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
 
     public Iterable<Carrinho> getCarrinhos() {
-        logger.info("Sending all categories");
+        logger.info("Sending all carrinhos");
         return carrinhoRepository.findAll();
     }
 
+
+    // A pegar um determinadado carinho atribuido a um cliente 
     @GetMapping(path = "/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Carrinho getCarrinho(@PathVariable int id) {
         logger.info("Sending cart with id " + id);
@@ -47,9 +51,6 @@ public class CarrinhoController {
     }
 
   
-
-
-    
     //Add um produto ao carrinho.
     @PostMapping(path = "/{carrinhoId}/produtos", produces = MediaType.APPLICATION_JSON_VALUE)
     public SimpleResult saveProductInCart(@RequestBody CarrinhoProduto carrprod) {
@@ -59,24 +60,24 @@ public class CarrinhoController {
 
     }
 
-     //Apagar todos os produtos de um carrinho
+     //Apagar todos os produtos de um carrinho, tendo como parametro o id do carrinho.
     @DeleteMapping(path = "produtos/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE )
     public SimpleResult deleteProductsCart(@PathVariable int id){
-        logger.info("Deleting products in cart ");
+        logger.info("Deleting all products in cart"+ id);
         // No verification to see if it exists
         carrinhoRepository.deleteProductsCart(id);
-        return new SimpleResult("Deleted products)", null);
+        return new SimpleResult("Deleted products", null);
     }
 
 
-    //Apagar um produto de um carrinho
+    //Apagar um produto de um carrinho, tendo como parametro o id do carrinho e do produto selecionado. 
     @DeleteMapping(path = "{carrid:[0-9]+}/produtos/{prodid:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE )
     
     public SimpleResult deleteProductCart(@PathVariable int prodid,@PathVariable int carrid){
-        logger.info("Deleting products in cart ");
+        logger.info("Deleting product in cart with id"+prodid );
         // No verification to see if it exists
         carrinhoRepository.deleteProductCart(prodid,carrid);
-        return new SimpleResult("Deleted products)", null);
+        return new SimpleResult("Deleted product", null);
     }
 
 

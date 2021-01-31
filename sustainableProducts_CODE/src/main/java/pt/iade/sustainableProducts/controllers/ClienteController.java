@@ -23,7 +23,8 @@ public class ClienteController {
 
     @Autowired
     private ClienteRepository clienteRepository;
-
+   
+    // A pegar todos os clientes presentes na plataforma
     @GetMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
 
     public Iterable<Cliente> getClientes() {
@@ -31,7 +32,7 @@ public class ClienteController {
         return clienteRepository.findAll();
     }
 
-
+   // A pegar um determinado cliente 
     @GetMapping(path = "/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Cliente getCliente(@PathVariable int id) {
          logger.info("Sending client with id "+id);
@@ -40,3 +41,4 @@ public class ClienteController {
     }
 
 }
+

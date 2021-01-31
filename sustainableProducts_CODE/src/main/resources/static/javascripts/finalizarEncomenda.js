@@ -10,7 +10,6 @@ window.onload = async function () {
     var client_data = document.getElementById("cliente");
     let cats = document.getElementById("categorias");
     let marcs = document.getElementById("marcas");
-    let shipping_methods = document.getElementById("envio")
     var produtos_carr = document.getElementById("produtos");
     tot = document.getElementById("total");
     let msgerror = document.getElementById("error")
@@ -98,15 +97,7 @@ window.onload = async function () {
     }
 }
 
-/*
-function calcpreco(){
-    let total=0
-    let porte = document.getElementById("porte").value
-    total = parseFloat(carrinho.carr_preco_total + parseFloat(porte))
-    tot.innerHTML =  `<p style="float: right;">Total: € ${total} - ${carrinho.carr_quant_prod} Produtos </p>`
 
-}
-*/
 
 function showCategoria(idcat) {
     sessionStorage.setItem("categoriaId", idcat);
@@ -213,15 +204,17 @@ async function saveEncomenda() {
             });
 
 
-            // Update o stock de cada produto da encomenda realizada
+            // Update do stock de cada produto da encomenda realizada
             let updateQtd = carr.produto.stock.quantidade - 1;
             let dataStock = {
                 quantidade: updateQtd 
 
             }
+            let prodID = carr.produto.id
+            let stockID = arr.produto.stock.id
 
             await $.ajax({
-                url: `/api/categorias/produtos/${carr.produto.id}/stocks/${carr.produto.stock.id}`,
+                url: `/api/categorias/produtos/${prodID}/stocks/${stockID}`,
                 method: "put",
                 data: JSON.stringify(dataStock),
                 dataType: "json",

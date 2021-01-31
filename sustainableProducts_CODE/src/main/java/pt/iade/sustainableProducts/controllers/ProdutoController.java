@@ -30,12 +30,13 @@ public class ProdutoController {
     private ProdutoRepository produtoRepository;
 
     @GetMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
-
+    // A  pegar todos os produtos presentes na plataforma
     public Iterable<Produto> getProdutos() {
         logger.info("Sending all products");
         return produtoRepository.findAll();
     }
 
+    // A pegar um determinado produto 
     @GetMapping(path = "/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Produto getProduto(@PathVariable int id) {
         logger.info("Sending produto with id " + id);
@@ -44,15 +45,16 @@ public class ProdutoController {
 
     }
 
+    //A pegar todos os produtos de uma determinada marca
     @GetMapping(path = "/{text:[^0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE )
-    public Iterable<Produto> getProdutoM(
+    public Iterable<Produto> getProdutosM(
     @PathVariable(value = "text") String text) {
     logger.info("Produto with marca "+text);
     return produtoRepository.findByMarca(text);
     }
 
 
-    // Update o Stock de cada produto em foi feita uma encomenda 
+    // A fazer o Update do Stock de um determidado produto presente em uma encomenda realizada. 
     @PutMapping(path = "/{id:[0-9]+}/stocks/{idStock:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
     public  SimpleResult updateStock(@RequestBody Stock stock, @PathVariable int idStock) { 
         logger.info("updating stock with id " + idStock);
@@ -65,3 +67,4 @@ public class ProdutoController {
 
 
 }
+

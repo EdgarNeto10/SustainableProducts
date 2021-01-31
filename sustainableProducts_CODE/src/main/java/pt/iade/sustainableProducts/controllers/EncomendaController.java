@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 import pt.iade.sustainableProducts.controllers.results.SimpleResult;
 import pt.iade.sustainableProducts.models.Encomenda;
 import pt.iade.sustainableProducts.models.EncomendaProduto;
-import pt.iade.sustainableProducts.models.EstadoEncomenda;
 import pt.iade.sustainableProducts.models.repositories.EncomendaRepository;
 
 @RestController
@@ -32,12 +31,16 @@ public class EncomendaController {
     private EncomendaRepository encomendaRepository;
 
     @GetMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
-
+ 
+    // A pegar todas as encomendas realizadas
+    // - Funcionalidade para teste.
     public Iterable<Encomenda> getEncomendas() {
         logger.info("Sending all encomendas");
         return encomendaRepository.findAll();
     }
 
+   // A pegar uma determinada encomenda realizada
+    // - Funcionalidade para teste, as encomendas estão a ser chamadas pelos clientes e vendorres .
     @GetMapping(path = "/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Encomenda getEncomenda(@PathVariable int id) {
         logger.info("Sending encomenda with id " + id);
@@ -46,13 +49,7 @@ public class EncomendaController {
 
     }
 
-    /*@PostMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE) // mesmo caminho q o find all
-    public Encomenda saveOrder(@RequestBody Encomenda encomenda) {
-        Encomenda savedOrder = encomendaRepository.save(encomenda);
-        logger.info("Saving encomenda with id " + savedOrder.getEnc_id());
-        return savedOrder;
-    }*/
-
+    // A salvar uma determinada encomenda 
     @PostMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public SimpleResult saveOrder(@RequestBody Encomenda enc) {
         logger.info("Adding encomenda with id " + enc.getId());
@@ -60,7 +57,9 @@ public class EncomendaController {
         return new SimpleResult("Added encomenda with id " + enc.getId(), enc);
 
     }
-
+  
+    //A salvar o produto de uma determinada encomeda
+    // Utlizado para fazer uma copia de tds os produtos de uma encomenda realizada 
     @PostMapping(path = "/produtos", produces = MediaType.APPLICATION_JSON_VALUE)
     public SimpleResult saveProductToEnc(@RequestBody EncomendaProduto encprod) {
         logger.info("Adding prod with id " + encprod.getProduto().getId());
@@ -68,7 +67,8 @@ public class EncomendaController {
         return new SimpleResult("Added prod with id ", encprod);
 
     }
-
+    
+    // A fazer o update do estado de uma encomenda realizada.
     @PutMapping(path = "/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
     public  SimpleResult updateOrder(@RequestBody Encomenda encestado, @PathVariable int id) { 
         logger.info("updating encomenda with id " + id);
@@ -77,6 +77,8 @@ public class EncomendaController {
 
     
     }
+ 
+
 
 }
 

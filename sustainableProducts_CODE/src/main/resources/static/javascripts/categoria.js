@@ -7,7 +7,7 @@ window.onload = async function () {
     categoriaId= sessionStorage.getItem("categoriaId");
     try {
         
-        //A Chamar os produtos na galeria
+        //A Chamar os produtos da categoria selecionada na galeria
         let categoria = await $.ajax({
             url: "/api/produtos/categorias/"+categoriaId,
             method: "get",

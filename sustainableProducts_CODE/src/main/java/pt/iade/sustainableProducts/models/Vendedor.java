@@ -30,10 +30,6 @@ public class Vendedor {
                                 
     @ManyToOne @MapsId("uti_id") @JoinColumn(name = "vend_fk_uti")  private Utilizador utilizador;
     
-    /*
-    @OneToMany @JoinColumn(name="vend_enc_fk_vend") @JsonIgnoreProperties("vendedor")
-    private List<VendedorEncomendas> vend_encomendas;
-    */
     @OneToMany @JoinColumn(name = "prod_fk_vend")  @JsonIgnoreProperties("vendedor") private List<Produto> produtos;
 
 
