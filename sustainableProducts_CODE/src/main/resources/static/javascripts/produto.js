@@ -5,6 +5,7 @@ window.onload = async function () {
     let prods = document.getElementById("produtos");
     let cats = document.getElementById("categorias");
     let marcs = document.getElementById("marcas");
+    let desc = document.getElementById("descricao");
 
     produtoId= sessionStorage.getItem("produtoId");
     carrinhoId= sessionStorage.getItem("carrinhoId");
@@ -28,8 +29,7 @@ window.onload = async function () {
         let m = [];
         /*
         for (let prod of produto){
-           
-            
+             
             //A chamar as marcas
             
             /*
@@ -38,16 +38,23 @@ window.onload = async function () {
                 marca = prod.marca
                 html3 += ` <a href="marca.html" onclick='showMarca("${marca}")' > ${marca} </a>`
             }
-            
-
-    
-            
 
         }
         */
-        html = ` <figure class="gallery-frame" onclick='showProduto (id=${produto.id})' ><img class="gallery-img" src="../images/logoSP.jpg"><figcaption>${produto.nome} - preço: €${produto.preco}</figcaption></figure>`
+        html = ` <figure class="gallery-frame" onclick='showProduto (id=${produto.id})' ><img class="gallery-img" src="../images/${produto.nome}.jpg" width="600" height="400"><figcaption>${produto.nome} - preço: €${produto.preco}</figcaption></figure>`
         marcs.innerHTML = html3;
         prods.innerHTML = html;
+
+        var str = produto.descricao;
+        
+        //Modificar String(descrção) do formato SQL para Html para quebrar linha.
+        var newStr= decodeURIComponent(str).replace(/\+/g, " ").replace(/\r/g, "<br/>");
+     /*
+        O método decodeURIComponent() decodifica um componente Identificador Uniforme de Recursos (URI)
+         criado anteriormente por um encodeURIComponent ou por uma rotina semelhante.
+         Retorna uma String.
+     */   
+        desc.innerHTML =`<p>${newStr}</p>` 
             
     
     

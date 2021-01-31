@@ -17,7 +17,7 @@ window.onload = async function () {
         let html3 = "";
 
         for (let prod of produtos)
-            html += ` <figure class="gallery-frame" id=${prod.id} ><img class="gallery-img" src="../images/logoSP.jpg"><figcaption>${prod.nome} - preço: €${prod.preco}</figcaption></figure>`
+            html += ` <figure class="gallery-frame" id=${prod.id} ><img class="gallery-img" src="../images/${prod.nome}.jpg" width="600" height="400"><figcaption>${prod.nome} - preço: €${prod.preco}</figcaption></figure>`
         
         prods.innerHTML= html
         

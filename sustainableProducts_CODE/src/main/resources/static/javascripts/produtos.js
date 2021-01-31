@@ -15,7 +15,7 @@ window.onload = async function () {
         var marca = "";
         let m = [];
         for (let prod of produtos){
-            html += ` <figure class="gallery-frame" onclick='showProduto (id=${prod.id})' ><img class="gallery-img" src="../images/logoSP.jpg"><figcaption>${prod.nome} - preço: €${prod.preco}</figcaption></figure>`
+            html += ` <figure class="gallery-frame" onclick='showProduto (id=${prod.id})' ><img class="gallery-img" src="../images/${prod.nome}.jpg" width="700" height="280"><figcaption>${prod.nome} - preço: €${prod.preco}</figcaption></figure>`
             //A chamar as marcas
             
             if(!m.includes(prod.marca)){
