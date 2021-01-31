@@ -79,7 +79,7 @@ window.onload = async function () {
 
 
         for (let prods of carrinho.carrinhoprodutos) {
-            html5 += `<p style="font-size: 50px;color: rgb(43, 32, 32) "> <img src="./images/logoSP.jpg" style="width: 100px;height: 100px"> ${prods.produto.nome} - Preço: €${prods.produto.preco}</p>`
+            html5 += `<p style="font-size: 50px;color: rgb(43, 32, 32) "> <img src="./images/${prods.produto.nome}.jpg" style="width: 100px;height: 100px"> ${prods.produto.nome} - Preço: €${prods.produto.preco}</p>`
 
         }
 
@@ -211,7 +211,7 @@ async function saveEncomenda() {
 
             }
             let prodID = carr.produto.id
-            let stockID = arr.produto.stock.id
+            let stockID = carr.produto.stock.id
 
             await $.ajax({
                 url: `/api/categorias/produtos/${prodID}/stocks/${stockID}`,
