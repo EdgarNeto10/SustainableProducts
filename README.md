@@ -49,12 +49,14 @@ O cliente poderá selecionar um produto e efetuar a compra do mesmo.
 1. O cliente poderá selecionar o  produto que pretende.
 1. Depois é redirecionado a uma pagina onde poderá visualizar a descrição detalhada do produto e o respectivo preço.
 1. Isto feito, o cliente poderá adicionar o produto ao seu carrinho.
-1. Depois o cliente poderá finalizar a compra do produto clicando na interface do carrinho.
-1. Isto feito, o cliente terá que escolher o transporte do produto que prefere e por fim clicará em encomendar.
+1. Após a visualização dos produtos no carrinho, o cliente pode decidir se apagará um produto ou não do carrinho.
+1. Depois o cliente poderá finalizar a compra do produto clicando em "finalizar encomenda".
+1. Isto feito, o cliente terá que escolher o transporte do produto que prefere e por fim clicará em "encomendar".
 
 **Pós-condições:**
-- Pagamento efetuado com sucesso.
-- São guardados no sistema os dados do cliente, do pagamento e da encomenda realizada.
+- São guardados no sistema os dados do cliente, dos produtos no carrinho e da encomenda realizada.
+- A cada encomenda realizada, diminui a quantidade do stock de cada produto.
+- Carrinho zerado com sucesso.
 
 ### Visualização e alteração do estado de encomendas por parte do vendedor.
 **Descrição:** \
@@ -66,11 +68,13 @@ O vendedor poderá visualizar e alterar o estado das encomendas realizadas por u
 **Passo a passo:**
 1. O vendedor na HomePage poderá clicar na secção de encomendas realizadas pelo cliente.   
 1. Depois o sistema irá redirecionar o vendedor para a lista de encomendas em processamento.
-1. O vendedor poderá selecionar a encomenda que pretende alterar o estado.
-1. Depois poderá clicar em alterar o estado da encomenda. 
+1. O vendedor poderá selecionar o estado(nova) de  cada encomenda que pretende alterar.
+1. Após clicar em "alterar", o estado da encomenda é alterado.
+1. E por fim, a página é actualizada e o estado da coluna "Estado da Encomenda" é actualizado.
+
 
 **Pós-condições:**
-O sistema altera o estado da encomenda(nova -> aguarde -> enviada -> entregue).
+O sistema altera o estado da encomenda (aguarde -> enviada -> entregue).
 
 ### Visualização do estado de encomendas efetuadas por parte do cliente.
 **Descrição:** \
@@ -82,7 +86,7 @@ O cliente poderá visualizar as encomendas e seus respectivos estados.
 **Passo a passo:**
 1. O cliente na HomePage poderá clicar na secção de encomendas efetuadas.   
 1. Depois o sistema irá redirecionar o cliente para lista de encomendas.
-1. Por fim, o cliente poderá visualizar o estado das encomendas que o mesmo realizou.
+1. Por fim, o cliente poderá visualizar o estado das encomendas alteradas pelo vendedor.
 
 
 **Pós-condições:**
