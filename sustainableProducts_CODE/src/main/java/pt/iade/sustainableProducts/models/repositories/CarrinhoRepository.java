@@ -25,14 +25,7 @@ public interface CarrinhoRepository extends CrudRepository<Carrinho, Integer> {
     nativeQuery=true)
     void addProdToCart(@Param("carrprod") CarrinhoProduto carrprod);
 
-    /*
-    @Modifying
-    @Transactional
-    
-    @Query(value="update carrinhos set carr_quant_prod = :#{#carr.carr_quant_prod}, carr_preco_total = :#{#carr.carr_preco_total} where carr_id = :id",nativeQuery=true )
-    void updatecart(@Param("carr") Carrinho carr, @Param("id") int id);
-*/
-   
+
 
     @Modifying
     @Transactional
@@ -42,7 +35,7 @@ public interface CarrinhoRepository extends CrudRepository<Carrinho, Integer> {
 
     @Modifying
     @Transactional
-    // Query para zerar os produtos de um carrinho. 
+    // Query para apagar um produto de um carrinho. 
     @Query(value=" DELETE FROM carrinho_produtos WHERE carrinho_produtos.carrprod_fk_carr = :carrid AND carrinho_produtos.carrprod_fk_prod = :prodid",nativeQuery=true )
     void deleteProductCart(@Param("prodid") int prodid,@Param("carrid") int carrid);
 

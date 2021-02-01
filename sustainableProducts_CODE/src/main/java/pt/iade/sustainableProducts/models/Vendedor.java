@@ -56,12 +56,7 @@ public class Vendedor {
          return utilizador;
      }
 
-     /*
-     public List<VendedorEncomendas> getVend_encomendas() {
-         return vend_encomendas;
-     }
-     */
-
+    
      public List<Encomenda> getEncomendas() {
          return encomendas;
      }

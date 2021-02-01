@@ -63,7 +63,7 @@ window.onload = async function () {
         });
         let html4 = "";
      
-       
+        // Adicionar cada produto na interface carrinho
         for (let prods of carrinho.carrinhoprodutos){
             html4 += `<p style="font-size: 50px;color: rgb(43, 32, 32) "> <img src="./images/${prods.produto.nome}.jpg" style="width: 100px;height: 100px"> ${prods.produto.nome} - Preço: €${prods.produto.preco}
                         <input type="checkbox" id="${prods.produto.id}" onclick="showProduto(${prods.produto.id})">

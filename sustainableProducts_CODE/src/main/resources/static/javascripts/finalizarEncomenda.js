@@ -225,7 +225,7 @@ async function saveEncomenda() {
 
         }
         deleteAllProducts();
-        res += "Produtos da encomenda salvos com sucesso -> ";
+        res += "Produtos da encomenda salvos com sucesso -> Stock dos produtos atualizado -> ";
         results.innerHTML = res
 
 
