@@ -108,11 +108,7 @@ public class Produto {
     }
 */
 
-/*
-    public List<EncomendaProduto> getEncomendaprodutos() {
-        return encomendaprodutos;
-    }
-*/
+
 
 
 

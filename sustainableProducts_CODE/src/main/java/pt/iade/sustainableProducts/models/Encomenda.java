@@ -43,27 +43,10 @@ public class Encomenda {
     @ManyToOne @MapsId("vend_id") @JoinColumn(name = "Enc_vend_id")  @JsonIgnoreProperties("encomendas")  private Vendedor vendedor;
 
 
-
-
-    
-
-   /*
-    @JsonIgnore private int Enc_fk_carr;
-    @OneToOne(cascade= CascadeType.ALL) @MapsId("Carr_id") @JoinColumn(name="Enc_fk_carr") private Carrinho carrinho;
-   */
-    
-   /*
-   @OneToMany @JoinColumn(name="vend_enc_fk_enc") @JsonIgnoreProperties("encomenda")
-    private List<VendedorEncomendas> vend_encomendas;
-    */
-
-
     @OneToMany @JoinColumn(name = "encpro_fk_enc")  @JsonIgnoreProperties("encomenda")
     private List<EncomendaProduto> encomendaprodutos;
   
- // O cascade é utilizado para não termos conflitos qunado estivermos a guardar a encomenda com o seu pagamento. Nã sei 
- // se há uma outra forma de se fazer mas esta é a q encontrei. Qualquer coisa pergunto ao Bugalho
-
+ 
 
 
     public Encomenda() {}
