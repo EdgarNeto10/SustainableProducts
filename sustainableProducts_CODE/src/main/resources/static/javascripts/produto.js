@@ -99,12 +99,14 @@ function showProduto(idprod) {
 
 //Post: Adding a product to cart
 async function add() {
-    // A verificar primeiro se o produto está disponivel em stock
-    if(produto.stock.disponivel){
+    // A verificar de se o produto está disponivel em stock está a ser feita  no back-end (carrinho controller).
+
         let carrid= carrinhoId
         let data = {
-            produto: { id: parseInt(produtoId) },
+            // A introduzir o nome e os dados do Stock para aceder no controller 
+            produto: { id: parseInt(produtoId), nome: produto.nome, stock:{quantidade: produto.stock.quantidade ,disponivel:produto.stock.disponivel}},
             carrinho:  {carr_id: parseInt(carrid)}
+
         };
         try {
             let resultt = await $.ajax({
@@ -118,11 +120,11 @@ async function add() {
         
         } 
 
-        catch (err) { console.log(err); }
-    }
-    else 
-        document.getElementById("result").innerHTML = "Produdo não disponível em Stock ";
-
+        catch (err) { 
+                        console.log(err); 
+                        document.getElementById("result").innerHTML = "<p style = 'color:red'; > Produto sem Stock disponível no momento <p> ";
+                    }
+                    
 }
 
 /*

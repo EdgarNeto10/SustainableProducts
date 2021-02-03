@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import pt.iade.sustainableProducts.controllers.results.SimpleResult;
 import pt.iade.sustainableProducts.models.Carrinho;
 import pt.iade.sustainableProducts.models.CarrinhoProduto;
+import pt.iade.sustainableProducts.models.exceptions.NotAcceptableException;
 import pt.iade.sustainableProducts.models.repositories.CarrinhoRepository;
 
 @RestController
@@ -50,11 +51,20 @@ public class CarrinhoController {
     //Add um produto ao carrinho.
     @PostMapping(path = "/{carrinhoId}/produtos", produces = MediaType.APPLICATION_JSON_VALUE)
     public SimpleResult saveProductInCart(@RequestBody CarrinhoProduto carrprod) {
-        logger.info("Adding prod with id " + carrprod.getProduto().getId());
-        carrinhoRepository.addProdToCart(carrprod);
-        return new SimpleResult("Added prod with id " + carrprod.getProduto().getId(), carrprod);
+    
+        //A verificar se o produto tem Stock disponível antes de adcionar o mesmo ao carrinho.
+        if(carrprod.getProduto().getStock().getDisponivel()){
 
+            logger.info("Adding prod with id " + carrprod.getProduto().getId());
+            carrinhoRepository.addProdToCart(carrprod);
+            return new SimpleResult("Added prod with id " + carrprod.getProduto().getId(), carrprod);
+        
+        } else {
+            throw new NotAcceptableException(carrprod.getProduto().getId(), "Produto", carrprod.getProduto().getNome());
+         }
+ 
     }
+
 
      //Apagar todos os produtos de um carrinho, tendo como parametro o id do carrinho.
     @DeleteMapping(path = "produtos/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE )
