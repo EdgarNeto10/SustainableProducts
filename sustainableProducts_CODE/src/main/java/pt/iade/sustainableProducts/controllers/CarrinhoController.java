@@ -67,7 +67,7 @@ public class CarrinhoController {
 
 
      //Apagar todos os produtos de um carrinho, tendo como parametro o id do carrinho.
-    @DeleteMapping(path = "produtos/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE )
+    @DeleteMapping(path = "{id:[0-9]+}/produtos/", produces = MediaType.APPLICATION_JSON_VALUE )
     public SimpleResult deleteProductsCart(@PathVariable int id){
         logger.info("Deleting all products in cart"+ id);
         // No verification to see if it exists

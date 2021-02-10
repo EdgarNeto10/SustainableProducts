@@ -8,7 +8,7 @@ public class NotAcceptableException extends RuntimeException {
     private static final long serialVersionUID = 5405519104069955535L;
 
     public NotAcceptableException(int id, String elemType, String idName) {
-        super(elemType + ": " + idName + " with id " + id + " not accetable");
+        super(elemType + ": " + idName + " with id " + id + " not acceptable");
     }
 
 }

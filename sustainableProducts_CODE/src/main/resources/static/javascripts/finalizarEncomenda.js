@@ -247,7 +247,7 @@ async function deleteAllProducts() {
     try {
 
         await $.ajax({
-            url: "/api/carrinhos/produtos/" + carrinhoId,
+            url: "/api/carrinhos/"+carrinhoId+"/produtos/",
             method: "delete",
             dataType: "json"
         });
