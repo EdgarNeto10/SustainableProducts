@@ -31,7 +31,34 @@ De acordo a pesquisa de mercado que foi realizada no que toca ao âmbito do proj
 Plataformas como: [1] Pegada verde, [2] Insane in the rain e a [3] Organiko suportam a compra e vendas de produtos sustentáveis.
 
 Sendo assim, a diferença da plataforma SustainableProducts para com as que foram mencionadas acima é que a SustainableProducts pretende fornecer diferentes tipos serviços sustentáveis 
-que serão fornecidos por empresas que são especializadas no desenvolvimento de serviços sustentáveis.       
+que serão fornecidos por empresas que são especializadas no desenvolvimento de serviços sustentáveis.
+
+## Interfaces Implementadas
+
+### Produtos
+Interface que permite o cliente visualizar os produtos disponíveis.
+![Produtos](https://user-images.githubusercontent.com/55880884/109402375-5b87c800-794d-11eb-8645-8ec66710c2e9.png)
+
+### Produto
+Interface que permite o cliente visualizar um determinado produto e adicionar ao carrinho.
+![Produto](https://user-images.githubusercontent.com/55880884/109402430-b7eae780-794d-11eb-8b4b-10a69e3daf19.png)
+
+### Carrinho
+Interface que permite o cliente visualizar os produtos adicionados ao carrinho.
+![Carrinho](https://user-images.githubusercontent.com/55880884/109402494-52e3c180-794e-11eb-8782-2221d0f9d3f4.png)
+
+### Finalizar encomendas 
+Interface que permite o cliente finalizar a encomenda.
+![Finalizar encomenda](https://user-images.githubusercontent.com/55880884/109402562-c08fed80-794e-11eb-8fc1-2ebde1adcf3d.png)
+
+### Aceder encomendas 
+Interface que permite o cliente aceder as suas encomendas efetuadas.
+![Encomendas_Cliente](https://user-images.githubusercontent.com/55880884/109402604-ffbe3e80-794e-11eb-86e6-2739b3ac7e0e.png)
+
+### Aceder encomendas dos clientes e alterar o estado
+Interface que permite o vendedor aceder as encomendas efetuadas e alterar o estado das mesmas.
+![Encomendas_vend](https://user-images.githubusercontent.com/55880884/109402647-53c92300-794f-11eb-953e-18d4d664d652.png)
+
 
 
 ## Casos de utilização:
@@ -96,6 +123,16 @@ N/A
 **Personas**
 1. Cliente: responsável por fazer a compra de um produto.
 1. Vendedor: responsável por alterar o estado das encomendas dos produtos.
+
+## Block Diagram 
+![Block Diagram SustProd](https://user-images.githubusercontent.com/55880884/109402725-0ef1bc00-7950-11eb-98c2-c00d4dd2a77c.png)
+
+
+## Domain Model
+![ClassDiagram](https://user-images.githubusercontent.com/55880884/109402870-4b71e780-7951-11eb-9dd5-fef4049cdcc0.png)
+
+
+
 
 
 ## Referências:
